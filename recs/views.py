@@ -25,7 +25,7 @@ from time import time
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, "index.html")
+    return render(request, "recs/index.html")
 
 
 def db(request):
@@ -35,4 +35,4 @@ def db(request):
 
     greetings = Greeting.objects.all()
 
-    return render(request, "db.html", {"greetings": greetings})
+    return render(request, "recs/db.html", {"greetings": greetings})
