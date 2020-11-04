@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "recs",
+    "bootstrap3",
 ]
 
 MIDDLEWARE = [
@@ -115,5 +116,9 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
+
+BOOTSTRAP3 = {
+'include_jquery': True,
+}
 
 django_heroku.settings(locals())
