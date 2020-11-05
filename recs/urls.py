@@ -7,7 +7,9 @@ from . import views
 app_name = 'recs'
 urlpatterns = [
     # Home Page
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
+
+    path('', views.upload, name='upload'),
 
     # Show all topics.
     path('topics/', views.topics, name='topics'),
@@ -23,3 +25,6 @@ urlpatterns = [
     #Page for editing an entry
     path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
