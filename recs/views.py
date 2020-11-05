@@ -43,7 +43,7 @@ def topics(request):
     """Show all topics."""
     topics = Topic.objects.order_by('date_added')
     context = {'topics': topics}
-    return render(request, 'rec/topics.html', context)
+    return render(request, 'recs/topics.html', context)
 
 def topic(request, topic_id):
     """Show a single topic and all its entires."""
