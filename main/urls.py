@@ -19,6 +19,7 @@ urlpatterns = [
     path('', include('recs.urls')),
     path("db/", recs.views.db, name="db"),
     path("admin/", admin.site.urls),
+    path('users/', include('users.urls')),
 ]
 
 # Only for development purposes.
