@@ -21,7 +21,7 @@ def document_to_text(document_path):
 
 def compile_document_text(text):
     # job_descriptions = pd.read_csv('data/job_descriptions.csv', index_col=0)
-    with open('rookieplays/pkl/job_descriptions.pkl', 'rb') as f:
+    with open('recs/pkl/job_descriptions.pkl', 'rb') as f:
         job_descriptions = pickle.load(f)
     data = [['resume', text]]
     basic_documentdf = pd.DataFrame(data, columns = ['title', 'description'])
@@ -45,7 +45,7 @@ def text_to_bagofwords(df):
 
 def join_and_condense(df):
     # job_descriptions = pd.read_csv('data/job_descriptions.csv', index_col=0)
-    with open('rookieplays/pkl/job_descriptions.pkl', 'rb') as f:
+    with open('recs/pkl/job_descriptions.pkl', 'rb') as f:
         job_descriptions = pickle.load(f)
     job_descriptions = job_descriptions.append(df)
     recommend_df = job_descriptions[['title', 'bag_of_words']]
@@ -86,7 +86,7 @@ def format_recommendations(recommendations):
 
 def top_100_categories(recommendations):
     # df = pd.read_csv('data/job_descriptions.csv', index_col=0)
-    with open('rookieplays/pkl/job_descriptions.pkl', 'rb') as f:
+    with open('recs/pkl/job_descriptions.pkl', 'rb') as f:
         df = pickle.load(f)
     user_titles = df[df.title.isin(recommendations)]
     user_titles = user_titles[['title', 'category']]

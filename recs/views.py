@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponse
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
+from django.core.files.storage import FileSystemStorage
+from django.contrib import messages
 
 from .models import Greeting, Document, Topic, Entry
 from .forms import TopicForm, EntryForm
@@ -75,7 +79,7 @@ def upload(request):
         # scrape jobs related to that job title
         # put jobs in dictionary with keys of
         # job title, company, link to job application, description, date posted, location, full-time/part-time, remote?
-    return render(request, 'rookieplays/upload.html', context)
+    return render(request, 'recs/upload.html', context)
 
 # def index(request):
     # return HttpResponse('Hello from Python!')

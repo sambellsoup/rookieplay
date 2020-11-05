@@ -5,11 +5,10 @@
   <meta charset="utf-8">
   <title>Rookieplay--Upload</title>
 
-
-
 </head>
-{% extends 'rookieplays/base.html' %}
+{% extends 'recs/base.html' %}
 <body>
+
 {% block content %}
 
 <p>RookiePlay lets your resume speak for itself</p>
@@ -21,12 +20,9 @@
 </form>
   <p>Please allow the system to process your document for up to 15 seconds.</p>
 
-
 {% if url %}
 
 {% load static %}
-<script src="{% static 'rookieplay/main.js' %}"></script>
-
 
 <script>
   var text;
