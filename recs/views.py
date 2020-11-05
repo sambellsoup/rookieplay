@@ -38,7 +38,7 @@ def upload(request):
         fs = FileSystemStorage()
         name = fs.save(uploaded_file.name, uploaded_file)
         context['url'] = fs.url(name)
-        data_folder = Path("C:/Users/sambe/Projects/Cover_Letter_Analysis/data/documents/")
+        data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
         document_path = str(data_folder) + '\\'+  uploaded_file.name
         """Recommendation functions"""
         resume_text = document_to_text(document_path)
