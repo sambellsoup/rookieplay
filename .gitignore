@@ -8,3 +8,6 @@ getting-started/*
 dev_env/
 
 data/
+
+
+**/node_modules
