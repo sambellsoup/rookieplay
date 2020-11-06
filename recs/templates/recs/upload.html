@@ -15,10 +15,12 @@
 <h2>Upload a resume or cover letter.</h2>
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-  <input type="file" name="document">
+  <input type="file" name="document", id="file_input"/>
+
   <button type="submit">Upload & Analyze</button>
 </form>
-  <p>Please allow the system to process your document for up to 15 seconds.</p>
+<p>Please allow the system to process your document for up to 15 seconds.</p>
+
 
 {% if url %}
 

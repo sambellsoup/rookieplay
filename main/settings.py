@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "recs",
     "users",
     "bootstrap3",
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,14 @@ BOOTSTRAP3 = {
 }
 
 django_heroku.settings(locals())
+
+
+#S3 BUCKETS CONFIG
+
+AWS_ACCESS_KEY_ID = 'AKIAQ2ZDWJXVAQFC2MUU'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'rookieplay-documents/documents'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
