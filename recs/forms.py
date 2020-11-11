@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Topic, Entry
+from .models import Topic, Entry, Document
 
 class TopicForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class EntryForm(forms.ModelForm):
         fields = ['text']
         labels = {'text': ''}
         widgets = {'text': forms.Textarea(attrs={'cols': 80})}
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        exclude = ()
