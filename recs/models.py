@@ -22,7 +22,7 @@ class Document(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
     created_at = models.DateTimeField(default=date.today)
     title = models.CharField(max_length=100)
-    document = models.FileField(null=True, upload_to='uploaded_documents')
+    document = models.FileField(null=True, upload_to='uploaded_documents/')
 
     def __str__(self):
         return self.title
@@ -43,3 +43,7 @@ class Entry(models.Model):
             return self.text[:50] + "..."
         else:
             return self.text[:50]
+
+class Upload(models.Model):
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    file = models.FileField()

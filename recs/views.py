@@ -5,8 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
+from django.conf import settings
 
-from .models import Greeting, Document, Topic, Entry
+from .models import Greeting, Document, Topic, Entry, Upload
 from .forms import TopicForm, EntryForm
 
 # recommendation packages
@@ -21,6 +22,8 @@ from tika import parser
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 
+from .models import Upload
+
 from pathlib import Path
 
 # Job Search API
@@ -34,12 +37,19 @@ def upload(request):
     context = {}
     if request.method == 'POST':
         """File handling"""
-        uploaded_file = request.FILES['document']
+        document_file = request.FILES['document']
+        # document_type = request.POST['document_type']
+
+        upload = Upload(file=document_file)
+        upload.save()
+        document_url = upload.file.url
+        print(document_url)
         fs = FileSystemStorage()
-        name = fs.save(uploaded_file.name, uploaded_file)
+        name = upload.save()
+        # name = fs.save(document_file.name, document_file)
         context['url'] = fs.url(name)
         data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
-        document_path = str(data_folder) + '\\'+  uploaded_file.name
+        document_path = str(data_folder) + '\\'+  document_file.name
         """Recommendation functions"""
         resume_text = document_to_text(document_path)
         basic_documentdf = compile_document_text(resume_text)

@@ -27,7 +27,7 @@ urlpatterns = [
 
     #Page for editing an entry
     path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
