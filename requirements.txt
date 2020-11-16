@@ -45,7 +45,6 @@ Pillow==7.2.0
 psycopg2==2.8.6
 pyasn1==0.4.8
 pyparsing==2.4.7
-pypiwin32==223
 python-dateutil==2.8.0
 pytz==2020.1
 PyYAML==5.3.1
