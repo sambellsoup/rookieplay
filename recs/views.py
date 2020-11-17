@@ -18,8 +18,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 from rake_nltk import Rake
-import tika
-tika.initVM()
 from tika import parser
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
@@ -49,7 +47,7 @@ def upload(request):
         fs = FileSystemStorage()
         name = upload.save()
         # name = fs.save(document_file.name, document_file)
-        context['url'] = fs.url(name)
+        context['url'] = document_url
         data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
         document_path = str(data_folder) + '\\'+  document_file.name
         """Recommendation functions"""
