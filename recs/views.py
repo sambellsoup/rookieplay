@@ -43,7 +43,7 @@ def upload(request):
         upload = Upload(file=document_file)
         upload.save()
         document_url = upload.file.url
-        print(document_url)
+        print("this is the document url " + document_url)
         fs = FileSystemStorage()
         name = upload.save()
         # name = fs.save(document_file.name, document_file)
@@ -51,7 +51,7 @@ def upload(request):
         data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
         document_path = str(data_folder) + '\\'+  document_file.name
         """Recommendation functions"""
-        resume_text = document_to_text(document_path)
+        resume_text = document_to_text(document_url)
         basic_documentdf = compile_document_text(resume_text)
         verbose_documentdf = text_to_bagofwords(basic_documentdf)
         recommend_df = join_and_condense(verbose_documentdf)
