@@ -39,17 +39,16 @@ def upload(request):
         """File handling"""
         document_file = request.FILES['document']
         # document_type = request.POST['document_type']
-
         upload = Upload(file=document_file)
         upload.save()
         document_url = upload.file.url
-        print("this is the document url " + document_url)
-        fs = FileSystemStorage()
+        # print("this is the document url " + document_url)
+        # fs = FileSystemStorage()
         name = upload.save()
         # name = fs.save(document_file.name, document_file)
         context['url'] = document_url
-        data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
-        document_path = str(data_folder) + '\\'+  document_file.name
+        # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
+        # document_path = str(data_folder) + '\\'+  document_file.name
         """Recommendation functions"""
         resume_text = document_to_text(document_url)
         basic_documentdf = compile_document_text(resume_text)
