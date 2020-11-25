@@ -22,6 +22,8 @@ import tika
 from tika import parser
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
+import urllib
+from io import BytesIO
 
 from .models import Upload
 
