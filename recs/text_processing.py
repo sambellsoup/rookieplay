@@ -1,6 +1,7 @@
 # library
 import matplotlib.pyplot as plt
 import pandas as pd
+import nltk
 from rake_nltk import Rake
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
@@ -18,6 +19,8 @@ from pdfminer.pdfparser import PDFParser
 import urllib
 
 from io import BytesIO
+
+nltk.download('stopwords')
 
 
 def document_to_text(url):
