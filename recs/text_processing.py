@@ -20,7 +20,7 @@ import urllib
 
 from io import BytesIO
 
-nltk.download('stopwords')
+
 
 
 def document_to_text(url):
@@ -68,6 +68,8 @@ def compile_document_text(text):
 def text_to_bagofwords(df):
     df['rake_key_words'] = ''
     r = Rake()
+    nltk.download('stopwords')
+    nltk.download('punkt')
     for index, row in df.iterrows():
         r.extract_keywords_from_text(row['description'])
         key_words_dict_scores = r.get_word_degrees()
