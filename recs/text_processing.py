@@ -2,6 +2,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
 from rake_nltk import Rake
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
@@ -68,8 +70,6 @@ def compile_document_text(text):
 def text_to_bagofwords(df):
     df['rake_key_words'] = ''
     r = Rake()
-    nltk.download('stopwords')
-    nltk.download('punkt')
     for index, row in df.iterrows():
         r.extract_keywords_from_text(row['description'])
         key_words_dict_scores = r.get_word_degrees()
