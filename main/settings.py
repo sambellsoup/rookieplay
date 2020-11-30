@@ -163,6 +163,3 @@ STATICFILES_DIRS = [
 DEFAULT_FILE_STORAGE = 'main.storages.MediaStore'
 
 AWS_S3_FILE_OVERWRITE = False
-
-# Tika environment variables
-TIKA_STARTUP_MAX_RETRY = 3
