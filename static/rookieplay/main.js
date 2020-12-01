@@ -14,6 +14,8 @@ var company_name = []
 var category = []
 var job_title = []
 
+console.log("THIS IS STATIC")
+
 
 /*
 $(function (){
