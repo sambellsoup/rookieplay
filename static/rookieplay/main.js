@@ -39,7 +39,7 @@ function thumbsup(key){
     // Use job title to conduct google search for links to live job ads
     var q = jobs[key]
     // window.open('https://serpapi.com/search.json?engine=google_jobs&q=' + q + '+new+york&hl=en')
-    document.getElementById("demoa" + x).innerHTML = q
+    // document.getElementById("demoa" + x).innerHTML = q
 
     x++
 
@@ -59,7 +59,7 @@ function thumbsup(key){
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
-        console.log('Status  HELLO HELLO HELLO:', this.status);
+        console.log('Status:', this.status);
         console.log('Headers:', this.getAllResponseHeaders());
         console.log('Body:', this.responseText);
 
