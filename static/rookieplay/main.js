@@ -42,8 +42,9 @@ function thumbsup(key){
     // window.open('https://serpapi.com/search.json?engine=google_jobs&q=' + q + '+new+york&hl=en')
     document.getElementById("demoa" + x).innerHTML = q
 
-    console.log("x-value after thumbs up: ", x)
+
     x++
+        console.log("x-value after thumbs up and add: ", x)
 
     // Replace old job title with a new job title to receive judgment from user
     jobs[key] = jobs_bank[0]
