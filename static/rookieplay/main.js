@@ -32,11 +32,14 @@ function thumbsup(key){
 
   }
   else{
+    console.log(x)
     thumbs_up_list.push(jobs[key]);
     // Use job title to conduct google search for links to live job ads
     var q = jobs[key]
     // window.open('https://serpapi.com/search.json?engine=google_jobs&q=' + q + '+new+york&hl=en')
     document.getElementById("demoa" + x).innerHTML = q
+
+    x++
 
     // Replace old job title with a new job title to receive judgment from user
     jobs[key] = jobs_bank[0]
@@ -54,9 +57,10 @@ function thumbsup(key){
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
-        console.log('Status:', this.status);
+        console.log('Status THIS ISN"T WORKING:', this.status);
         console.log('Headers:', this.getAllResponseHeaders());
         console.log('Body:', this.responseText);
+
 
         var myJSON = this.responseText;
         var myObj = JSON.parse(myJSON);
@@ -98,9 +102,11 @@ function thumbsup(key){
         document.getElementById("demobb" + x).innerHTML = "Post Date: " + post_date[0];
 
 
-        x++
+
        }
      };
+
+
 
     var body = {
       'size': 10,
