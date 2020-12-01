@@ -15,6 +15,7 @@ var category = []
 var job_title = []
 
 console.log("THIS IS STATIC")
+console.log("x-value: ", x)
 
 
 /*
@@ -34,13 +35,14 @@ function thumbsup(key){
 
   }
   else{
-    console.log(x)
+    console.log("x-value after thumbs up: ", x)
     thumbs_up_list.push(jobs[key]);
     // Use job title to conduct google search for links to live job ads
     var q = jobs[key]
     // window.open('https://serpapi.com/search.json?engine=google_jobs&q=' + q + '+new+york&hl=en')
-    // document.getElementById("demoa" + x).innerHTML = q
+    document.getElementById("demoa" + x).innerHTML = q
 
+    console.log("x-value after thumbs up: ", x)
     x++
 
     // Replace old job title with a new job title to receive judgment from user
