@@ -11,3 +11,6 @@ data/
 invoices/
 
 **/node_modules
+
+
+/static/rookieplay/key.json
