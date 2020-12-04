@@ -17,8 +17,11 @@ var job_title = []
 console.log("THIS IS STATIC")
 console.log("x-value: ", x)
 
-const data = require('./key.json');
-console.log(data);
+fetch("key.json")
+.then(response => {
+   return response.json();
+})
+.then(data => console.log(data));
 
 client_id_value = 'rooki_jp_sandbox_e7fea44cf2'
 client_auth_key_value = 't2PM7wVV5Ij2wyJ-caRNuQEB6JsFImTjitzX60UElyY'
