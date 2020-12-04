@@ -17,7 +17,7 @@ var job_title = []
 console.log("THIS IS STATIC")
 console.log("x-value: ", x)
 
-fetch("key.json")
+fetch("./keys.json")
 .then(response => {
    return response.json();
 })
