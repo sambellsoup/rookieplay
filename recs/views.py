@@ -49,7 +49,7 @@ def upload(request):
         # fs = FileSystemStorage()
         name = upload.save()
         # name = fs.save(document_file.name, document_file)
-        context['url'] = document_url
+        # context['url'] = document_url
         context = {
             'url': document_url,
             'client_id_value': settings.JOBSPIKR_API_ID,

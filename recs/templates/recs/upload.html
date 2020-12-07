@@ -29,8 +29,8 @@
 
 
 <script>
-  var client_id_value = {{ client_id_value }}
-  var client_auth_key_value = {{ client_auth_key_value }}
+  // var client_id_value = {{ client_id_value }}
+  // var client_auth_key_value = {{ client_auth_key_value }}
   var text;
   var jobs = {{recommendations | safe}};
   var jobs_bank = {{recommendations | safe}};
@@ -92,6 +92,8 @@
 </script>
 
 <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+
+<p> Client ID value Here: {{ client_id_value }}
 
 
 <h2>Job Title Recommendations: </h2>
