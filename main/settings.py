@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -166,3 +166,7 @@ STATICFILES_DIRS = [
 DEFAULT_FILE_STORAGE = 'main.storages.MediaStore'
 
 AWS_S3_FILE_OVERWRITE = False
+
+# JobsPikr settings
+JOBSPIKR_API_ID = os.environ.get('JOBSPIKR_API_ID')
+JOBSPIKR_API_KEY = os.environ.get('JOBSPIKR_API_KEY')
