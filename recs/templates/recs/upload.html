@@ -29,13 +29,13 @@
 
 
 <script>
-  // var client_id_value = {{ client_id_value }}
+  var client_id_value = {{ client_id_value }}
   // var client_auth_key_value = {{ client_auth_key_value }}
   var text;
   var jobs = {{recommendations | safe}};
   var jobs_bank = {{recommendations | safe}};
 
-  // console.log(client_id_value)
+  console.log('Client ID Value: 'client_id_value)
   // console.log(client_auth_key_value)
 
   jobs_bank.splice(0, 3)
@@ -92,7 +92,7 @@
 </script>
 
 <p>Uploaded file: <a href="{{ url }}">{{ url }}</a>
-Check: {{ client_id_value }}
+Check: The client id value is {{ client_id_value }}
 </p>
 
 

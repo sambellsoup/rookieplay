@@ -52,7 +52,7 @@ def upload(request):
         # context['url'] = document_url
         context = {
             'url': document_url,
-            'client_id_value': "rooki_jp_sandbox_e7fea44cf2",
+            'client_id_value': settings.JOBSPIKR_API_ID,
             'client_auth_key_value': settings.JOBSPIKR_API_KEY
         }
         # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
