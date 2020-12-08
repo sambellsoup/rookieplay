@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
 from django.conf import settings
+from django.conf.settings import JOBSPIKR_API_ID, JOBSPIKR_API_KEY
 
 from .models import Greeting, Document, Topic, Entry, Upload
 from .forms import TopicForm, EntryForm
@@ -52,8 +53,8 @@ def upload(request):
         # context['url'] = document_url
         context = {
             'url': document_url,
-            'client_id_value': settings.JOBSPIKR_API_ID,
-            'client_auth_key_value': settings.JOBSPIKR_API_KEY
+            'client_id_value': JOBSPIKR_API_ID,
+            'client_auth_key_value': JOBSPIKR_API_KEY
         }
         # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
         # document_path = str(data_folder) + '\\'+  document_file.name
