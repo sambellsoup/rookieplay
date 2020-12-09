@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
-from django.conf import settings
+from django.conf import settings as conf_settings
 
 from .models import Greeting, Document, Topic, Entry, Upload
 from .forms import TopicForm, EntryForm
@@ -30,7 +30,7 @@ from .models import Upload
 from pathlib import Path
 
 # Job Search API
-from serpapi import GoogleSearchResults
+import os
 
 from time import time
 
@@ -51,9 +51,9 @@ def upload(request):
         # name = fs.save(document_file.name, document_file)
         # context['url'] = document_url
         context = {
-            'url': document_url
-            # 'client_id_value': JOBSPIKR_API_ID,
-            # 'client_auth_key_value': JOBSPIKR_API_KEY
+            'url': document_url,
+            'client_id_value': conf_settings.JOBSPIKR_API_ID,
+            'client_auth_key_value': conf_settings.JOBSPIKR_API_KEY
         }
         # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
         # document_path = str(data_folder) + '\\'+  document_file.name
