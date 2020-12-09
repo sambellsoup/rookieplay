@@ -51,9 +51,9 @@ def upload(request):
         # name = fs.save(document_file.name, document_file)
         # context['url'] = document_url
         context = {
-            'url': document_url,
-            'client_id_value': JOBSPIKR_API_ID,
-            'client_auth_key_value': JOBSPIKR_API_KEY
+            'url': document_url
+            # 'client_id_value': JOBSPIKR_API_ID,
+            # 'client_auth_key_value': JOBSPIKR_API_KEY
         }
         # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
         # document_path = str(data_folder) + '\\'+  document_file.name
