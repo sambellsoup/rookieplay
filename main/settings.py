@@ -13,12 +13,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import django_heroku
 
-from decouple import config
-
-import environ
-env = environ.Env()
-# reading .env file
-environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -174,5 +168,5 @@ DEFAULT_FILE_STORAGE = 'main.storages.MediaStore'
 AWS_S3_FILE_OVERWRITE = False
 
 # JobsPikr settings
-JOBSPIKR_API_ID = config(JOBSPIKR_API_ID)
-JOBSPIKR_API_KEY = config(JOBSPIKR_API_KEY)
+# JOBSPIKR_API_ID = config(JOBSPIKR_API_ID)
+# JOBSPIKR_API_KEY = config(JOBSPIKR_API_KEY)
