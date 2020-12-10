@@ -63,8 +63,8 @@ function thumbsup(key){
     request.open('POST', 'https://private-anon-8318cc252f-jobspikr.apiary-mock.com/v2/data');
 
     request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('client_id', {{ client_id_value | safe }});
-    request.setRequestHeader('client_auth_key', {{ client_auth_key_value | safe }});
+    request.setRequestHeader('client_id', client_id_value);
+    request.setRequestHeader('client_auth_key', client_auth_key_value);
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
