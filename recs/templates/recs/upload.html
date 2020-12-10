@@ -29,9 +29,9 @@
 
 
 <script>
-  // var client_id_value = {{ client_id_value | safe }};
-  // var aws_access_key_value = {{ aws_access_key_value | safe }};
-  // var client_auth_key_value = {{ client_auth_key_value | safe }};
+  var client_id_value = {{ client_id_value | safe }};
+  var aws_access_key_value = {{ aws_access_key_value | safe }};
+  var client_auth_key_value = {{ client_auth_key_value | safe }};
   var text;
   var jobs = {{recommendations | safe}};
   var jobs_bank = {{recommendations | safe}};
@@ -94,7 +94,7 @@
 
 <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
 <p>Check: The client id value is "{{ client_id_value }}"</p>
-<p>Check: The aws id value is "{{ aws_access_key_value }}""</p>
+<p>Check: The client key value is "{{ client_auth_key_value }}"</p>
 
 
 

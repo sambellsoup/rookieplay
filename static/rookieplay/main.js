@@ -17,7 +17,7 @@ var job_title = []
 console.log("THIS IS STATIC")
 console.log("x-value: ", x)
 
-console.log({{ client_auth_key_value | safe }})
+// console.log({{ client_auth_key_value | safe }})
 
 
 // client_id_value = 'rooki_jp_sandbox_e7fea44cf2'
