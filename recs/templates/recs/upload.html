@@ -29,8 +29,8 @@
 
 
 <script>
-  var client_id_value = {{ client_id_value | safe }};
-  var client_auth_key_value = {{ client_auth_key_value | safe }};
+  var client_id_value = "{{ client_id_value | safe }}";
+  var client_auth_key_value = "{{ client_auth_key_value | safe }}";
   var text;
   var jobs = {{ recommendations | safe }};
   var jobs_bank = {{ recommendations | safe }};

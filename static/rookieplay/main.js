@@ -60,7 +60,7 @@ function thumbsup(key){
 
     var request = new XMLHttpRequest();
 
-    request.open('POST', 'https://private-anon-8318cc252f-jobspikr.apiary-mock.com/v2/data');
+    request.open('POST', 'https://api.jobspikr.com/v2');
 
     request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('client_id', client_id_value);
