@@ -53,7 +53,8 @@ def upload(request):
         context = {
             'url': document_url,
             'client_id_value': conf_settings.JOBSPIKR_API_ID,
-            'client_auth_key_value': conf_settings.JOBSPIKR_API_KEY
+            'client_auth_key_value': conf_settings.JOBSPIKR_API_KEY,
+            'aws_access_key_value': conf_settings.AWS_ACCESS_KEY_ID
         }
         # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
         # document_path = str(data_folder) + '\\'+  document_file.name

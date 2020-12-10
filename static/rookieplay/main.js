@@ -17,9 +17,11 @@ var job_title = []
 console.log("THIS IS STATIC")
 console.log("x-value: ", x)
 
+console.log({{ client_auth_key_value | safe }})
 
-client_id_value = 'rooki_jp_sandbox_e7fea44cf2'
-client_auth_key_value = 't2PM7wVV5Ij2wyJ-caRNuQEB6JsFImTjitzX60UElyY'
+
+// client_id_value = 'rooki_jp_sandbox_e7fea44cf2'
+// client_auth_key_value = 't2PM7wVV5Ij2wyJ-caRNuQEB6JsFImTjitzX60UElyY'
 
 
 /*
@@ -61,8 +63,8 @@ function thumbsup(key){
     request.open('POST', 'https://private-anon-8318cc252f-jobspikr.apiary-mock.com/v2/data');
 
     request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('client_id', client_id_value);
-    request.setRequestHeader('client_auth_key', client_auth_key_value);
+    request.setRequestHeader('client_id', {{ client_id_value | safe }});
+    request.setRequestHeader('client_auth_key', {{ client_auth_key_value | safe }});
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {

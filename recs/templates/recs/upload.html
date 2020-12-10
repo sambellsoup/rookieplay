@@ -29,13 +29,14 @@
 
 
 <script>
-  var client_id_value = {{ client_id_value }}
-  // var client_auth_key_value = {{ client_auth_key_value }}
+  // var client_id_value = {{ client_id_value | safe }};
+  // var aws_access_key_value = {{ aws_access_key_value | safe }};
+  // var client_auth_key_value = {{ client_auth_key_value | safe }};
   var text;
   var jobs = {{recommendations | safe}};
   var jobs_bank = {{recommendations | safe}};
 
-  console.log('Client ID Value: ',client_id_value)
+  console.log('Client ID Value: ', client_id_value)
   // console.log(client_auth_key_value)
 
   jobs_bank.splice(0, 3)
@@ -91,9 +92,9 @@
 
 </script>
 
-<p>Uploaded file: <a href="{{ url }}">{{ url }}</a>
-<!-- Check: The client id value is {{ client_id_value }} -->
-</p>
+<p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+<p>Check: The client id value is "{{ client_id_value }}"</p>
+<p>Check: The aws id value is "{{ aws_access_key_value }}""</p>
 
 
 
