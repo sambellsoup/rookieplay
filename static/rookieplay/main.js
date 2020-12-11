@@ -60,7 +60,7 @@ function thumbsup(key){
 
     var request = new XMLHttpRequest();
 
-    request.open('POST', 'https://api-bcp.jobspikr.com/v2');
+    request.open('POST', 'https://api.jobspikr.com/v2/data');
 
     request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('client_id', client_id_value);
@@ -71,14 +71,28 @@ function thumbsup(key){
         console.log('Status:', this.status);
         console.log('Headers:', this.getAllResponseHeaders());
         console.log('Body:', this.responseText);
+      }
+    };
+
+    var body = {
+      'size': 50,
+      'cursor': 1549411216369936,
+      'format': 'json',
+      'search_query_json': {
+        'query_string': {
+          'default_field': 'job_title',
+          'query': 'marketing'
+        }
+      }
+    };
+
+    request.send(JSON.stringify(body));
 
 
-        var myJSON = this.responseText;
-        var myObj = JSON.parse(myJSON);
-        console.log(myObj)
-      //a is counter and z is a string to convey parsed data
+        // console.log("The cursor is", body.cursor)
+        // console.log("this is myObj", myObj);
 
-
+/*
         for (a in myObj.job_data) {
 	         z += "Job Type: " + myObj.job_data[a].job_type + " "
            z += "Cursor: " + myObj.job_data[a].cursor + " "
@@ -105,98 +119,7 @@ function thumbsup(key){
 	         category.push(myObj.job_data[a].category)
 	         job_title.push(myObj.job_data[a].job_title)
          }
-
-        console.log(job_title)
-        console.log(job_title[0])
-        document.getElementById("demob" + x).innerHTML = "Job Title: " + job_title[0];
-        document.getElementById("demoba" + x).innerHTML = "Description: " + job_description[0];
-        document.getElementById("demobb" + x).innerHTML = "Post Date: " + post_date[0];
-
-
-
-       }
-     };
-
-
-
-    var body = {
-      'size': 10,
-      'cursor': 1549411216369936,
-      'format': 'json',
-      "search_query_json": {
-        "bool": {
-          "must": [
-            {
-              "query_string": {
-                "fields": [
-                  "job_title",
-                  "inferred_job_title"
-                ],
-                "query": q
-              }
-            },
-            {
-              "query_string": {
-                "default_field": "job_type",
-                "query": "*"
-              }
-            },
-            {
-              "query_string": {
-                "default_field": "company_name",
-                "query": "*"
-              }
-            },
-            {
-              "bool": {
-                "should": [
-                  {
-                    "bool": {
-                      "must": [
-                        {
-                          "query_string": {
-                            "fields": [
-                              "country",
-                              "inferred_country"
-                            ],
-                            "query": "\"United States\" OR \"USA\" OR \"United States\" OR \"US\""
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "range": {
-                "post_date": {
-                  "gte": "2019-06-01",
-                  "lte": "2019-07-31"
-                }
-              }
-            }
-          ],
-          "must_not": [
-            null,
-            {
-              "query_string": {
-                "default_field": "company_name",
-                "query": "Unspecified"
-              }
-            }
-          ]
-        }
-      }
-    };
-
-    request.send(JSON.stringify(body));
-
-
-        // console.log("The cursor is", body.cursor)
-        // console.log("this is myObj", myObj);
-
-
+*/
 
     $(function (){
 
