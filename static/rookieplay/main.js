@@ -60,7 +60,7 @@ function thumbsup(key){
 
     var request = new XMLHttpRequest();
 
-    request.open('POST', 'https://api.jobspikr.com/v2');
+    request.open('POST', 'https://api-bcp.jobspikr.com/v2');
 
     request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('client_id', client_id_value);
