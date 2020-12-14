@@ -50,7 +50,7 @@ function thumbsup(key){
 
 
     x++
-        console.log("x-value after thumbs up and add: ", x)
+    console.log("x-value after thumbs up and add: ", x)
 
     // Replace old job title with a new job title to receive judgment from user
     jobs[key] = jobs_bank[0]
@@ -75,7 +75,7 @@ function thumbsup(key){
     };
 
     var body = {
-      'size': 50,
+      'size': 10,
       'cursor': 1549411216369936,
       'format': 'json',
       'search_query_json': {
