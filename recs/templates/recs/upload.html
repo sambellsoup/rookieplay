@@ -2,11 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
   <title>Rookieplay--Upload</title>
 
 </head>
 {% extends 'recs/base.html' %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 
 {% block content %}
@@ -92,10 +93,9 @@
 
 <h2>Job Title Recommendations: </h2>
 
-
-  <div id="menu0">{{recommendations.0}}</div>
-  <button type="button" name="thumbs-down-0" id="thumbs-down-0" class="btn" onclick="thumbsdown(0);">Thumbs Down</button>
-  <button type="button" name="thumbs-up-0" id="thumbs-up-0" class="btn btn-success btn-lg" onclick="thumbsup(0);">Thumbs Up</button>
+  <div id="menu0" class="w3-container">{{recommendations.0}}</div>
+  <button type="button" name="thumbs-down-0" id="thumbs-down-0" class="w3-button w3-black" onclick="thumbsdown(0);">Thumbs Down</button>
+  <button type="button" name="thumbs-up-0" id="thumbs-up-0" class="w3-button w3-black" onclick="thumbsup(0);">Thumbs Up</button>
 
 
   <div id="menu1">{{recommendations.1}}</div>
