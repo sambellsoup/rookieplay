@@ -71,6 +71,8 @@ function thumbsup(key){
         console.log('Status:', this.status);
         console.log('Headers:', this.getAllResponseHeaders());
         console.log('Body:', this.responseText);
+        var jobObj = this.responeText
+        console.log('the type of data this is: ',typeof jobObj)
       }
     };
 
@@ -89,8 +91,8 @@ function thumbsup(key){
     request.send(JSON.stringify(body));
 
 
-        // console.log("The cursor is", body.cursor)
-        // console.log("this is myObj", myObj);
+    console.log("The cursor is", body.cursor)
+    console.log("this is myObj: ", myObj);
 
 /*
         for (a in myObj.job_data) {
@@ -120,6 +122,8 @@ function thumbsup(key){
 	         job_title.push(myObj.job_data[a].job_title)
          }
 */
+
+var response = this.responseText
 
     $(function (){
 
