@@ -118,11 +118,16 @@ function thumbsup(key){
             'query': '\'United States\' OR \'USA\' OR \'United States\' OR \'US\''
           }
         }
+        {
+          'query_string': {
+     "default_field": "has_expired",
+     "query": false
+  }
+        }
       ]
     }
   }
 };
-
     request.send(JSON.stringify(body));
 
 
