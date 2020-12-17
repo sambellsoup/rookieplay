@@ -69,18 +69,17 @@ function thumbsup(key){
         console.log("typeof test: ", typeof this.responseText);
         var myObj = JSON.parse(this.responseText);
         for (a in myObj.job_data){
-          z += "Job Type: " + myObj.job_data[a].job_type + " "
-          z += "Cursor: " + myObj.job_data[a].cursor + " "
-          z += "City: " + myObj.job_data[a].city + " "
-          z += "Salary Offered: " + myObj.job_data[a].salary_offered + " "
-          z += "URL: " + myObj.job_data[a].url + " "
-          z += "Job Description: " + myObj.job_data[a].job_description + " "
-          z += "Job Board: " + myObj.job_data[a].job_board + " "
-          z += "Post Date: " + myObj.job_data[a].post_date + " "
-          z += "Company Name: " + myObj.job_data[a].company_name + " "
-          z += "Category: " + myObj.job_data[a].category + " "
-          z += "Job Title: " + myObj.job_data[a].job_title + " "
-          console.log(z)
+          z += "Job Type: " + myObj.job_data[a].job_type + "\n"
+          z += "Cursor: " + myObj.job_data[a].cursor + "\n"
+          z += "City: " + myObj.job_data[a].city + "\n"
+          z += "Salary Offered: " + myObj.job_data[a].salary_offered + "\n"
+          z += "URL: " + myObj.job_data[a].url + "\n"
+          z += "Job Description: " + myObj.job_data[a].job_description + "\n"
+          z += "Job Board: " + myObj.job_data[a].job_board + "\n"
+          z += "Post Date: " + myObj.job_data[a].post_date + "\n"
+          z += "Company Name: " + myObj.job_data[a].company_name + "\n"
+          z += "Category: " + myObj.job_data[a].category + "\n"
+          z += "Job Title: " + myObj.job_data[a].job_title + "\n"
 
           job_type.push(myObj.job_data[a].job_type)
           cursor.push(myObj.job_data[a].cursor)
@@ -94,7 +93,13 @@ function thumbsup(key){
           category.push(myObj.job_data[a].category)
           job_title.push(myObj.job_data[a].job_title)
         }
-        document.getElementById("demob" + x).innerHTML = job_description[0];
+        console.log(z)
+        document.getElementById("demob" + x).innerHTML = "Job Title: ", job_title[0];
+        document.getElementById("democ" + x).innerHTML = "Location: ", job_title[0];
+        document.getElementById("democ" + x).innerHTML = "Posted: ", job_title[0];
+        document.getElementById("democ" + x).innerHTML = "Apply: ", job_title[0];
+        document.getElementById("democ" + x).innerHTML = "Company Name: ", job_title[0];
+        document.getElementById("democ" + x).innerHTML = "Job Description: ", job_title[0];
         x++
 
         console.log("x-value after thumbs up and add: ", x)
@@ -102,16 +107,30 @@ function thumbsup(key){
     };
 
     var body = {
-      'size': 10,
-      'cursor': 1549411216369936,
-      'format': 'json',
-      'search_query_json': {
-        'query_string': {
-          'default_field': 'job_title',
-          'query': 'marketing'
+  'size': 10,
+  'format': 'json',
+  'search_query_json': {
+    'bool': {
+      'must': [
+        {
+          'query_string': {
+            'default_field': 'job_title',
+            'query': q
+          }
+        },
+        {
+          'query_string': {
+            'fields': [
+              'country',
+              'inferred_country'
+            ],
+            'query': '\'United States\' OR \'USA\' OR \'United States\' OR \'US\''
+          }
         }
-      }
-    };
+      ]
+    }
+  }
+};
 
     request.send(JSON.stringify(body));
 
