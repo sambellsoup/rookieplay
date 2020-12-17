@@ -71,9 +71,9 @@ function thumbsup(key){
         console.log('Status:', this.status);
         console.log('Headers:', this.getAllResponseHeaders());
         console.log('Body:', this.responseText);
-        var jobObj = this.responeText;
-        console.log('var test: ',jobObj);
-        console.log("The cursor is: ", body.cursor);
+        console.log("typeof test: ", typeof this.responseText);
+        var myObj = JSON.parse(this.responseText);
+        document.getElementById("demob" + x).innerHTML = myObj.status;
       }
     };
 
