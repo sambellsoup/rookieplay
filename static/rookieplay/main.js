@@ -69,18 +69,6 @@ function thumbsup(key){
         console.log("typeof test: ", typeof this.responseText);
         var myObj = JSON.parse(this.responseText);
         for (a in myObj.job_data){
-          z += "Job Type: " + myObj.job_data[a].job_type + "\n"
-          z += "Cursor: " + myObj.job_data[a].cursor + "\n"
-          z += "City: " + myObj.job_data[a].city + "\n"
-          z += "Salary Offered: " + myObj.job_data[a].salary_offered + "\n"
-          z += "URL: " + myObj.job_data[a].url + "\n"
-          z += "Job Description: " + myObj.job_data[a].job_description + "\n"
-          z += "Job Board: " + myObj.job_data[a].job_board + "\n"
-          z += "Post Date: " + myObj.job_data[a].post_date + "\n"
-          z += "Company Name: " + myObj.job_data[a].company_name + "\n"
-          z += "Category: " + myObj.job_data[a].category + "\n"
-          z += "Job Title: " + myObj.job_data[a].job_title + "\n"
-
           job_type.push(myObj.job_data[a].job_type)
           cursor.push(myObj.job_data[a].cursor)
           city.push(myObj.job_data[a].city)
@@ -93,13 +81,14 @@ function thumbsup(key){
           category.push(myObj.job_data[a].category)
           job_title.push(myObj.job_data[a].job_title)
         }
-        console.log(z)
-        document.getElementById("demob" + x).innerHTML = "Job Title: ", job_title[0];
-        document.getElementById("democ" + x).innerHTML = "Location: ", job_title[0];
-        document.getElementById("democ" + x).innerHTML = "Posted: ", job_title[0];
-        document.getElementById("democ" + x).innerHTML = "Apply: ", job_title[0];
-        document.getElementById("democ" + x).innerHTML = "Company Name: ", job_title[0];
-        document.getElementById("democ" + x).innerHTML = "Job Description: ", job_title[0];
+        console.log(job_title)
+
+        document.getElementById("demob" + x).innerHTML = "Job Title: " + job_title[0];
+        document.getElementById("democ" + x).innerHTML = "Location: " + job_city[0];
+        document.getElementById("democ" + x).innerHTML = "Posted: " + post_date[0];
+        document.getElementById("democ" + x).innerHTML = "Apply: " + url[0];
+        document.getElementById("democ" + x).innerHTML = "Company Name: " + company_name[0];
+        document.getElementById("democ" + x).innerHTML = "Job Description: " + job_description[0];
         x++
 
         console.log("x-value after thumbs up and add: ", x)
