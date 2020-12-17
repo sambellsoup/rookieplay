@@ -5,6 +5,7 @@ var a, z = "";
 var job_type = []
 var cursor = []
 var city = []
+var state = []
 var salary_offered = []
 var url = []
 var job_description = []
@@ -13,9 +14,6 @@ var post_date = []
 var company_name = []
 var category = []
 var job_title = []
-
-console.log("THIS IS STATIC")
-console.log("x-value: ", x)
 
 // console.log({{ client_auth_key_value | safe }})
 
@@ -72,6 +70,7 @@ function thumbsup(key){
           job_type.push(myObj.job_data[a].job_type)
           cursor.push(myObj.job_data[a].cursor)
           city.push(myObj.job_data[a].city)
+          state.push(myObj.job_data[a].state)
           salary_offered.push(myObj.job_data[a].salary_offered)
           url.push(myObj.job_data[a].url)
           job_description.push(myObj.job_data[a].job_description)
@@ -84,11 +83,11 @@ function thumbsup(key){
         console.log(job_title)
 
         document.getElementById("demob" + x).innerHTML = "Job Title: " + job_title[0];
-        document.getElementById("democ" + x).innerHTML = "Location: " + job_city[0];
-        document.getElementById("democ" + x).innerHTML = "Posted: " + post_date[0];
-        document.getElementById("democ" + x).innerHTML = "Apply: " + url[0];
-        document.getElementById("democ" + x).innerHTML = "Company Name: " + company_name[0];
-        document.getElementById("democ" + x).innerHTML = "Job Description: " + job_description[0];
+        document.getElementById("democ" + x).innerHTML = "Location: " + city[0] + "," + state[0];
+        document.getElementById("demod" + x).innerHTML = "Posted: " + post_date[0];
+        document.getElementById("demoe" + x).innerHTML = "Apply: " + url[0];
+        document.getElementById("demof" + x).innerHTML = "Company Name: " + company_name[0];
+        document.getElementById("demog" + x).innerHTML = "Job Description: " + job_description[0];
         x++
 
         console.log("x-value after thumbs up and add: ", x)
