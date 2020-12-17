@@ -68,7 +68,6 @@ function thumbsup(key){
         console.log('Body:', this.responseText);
         console.log("typeof test: ", typeof this.responseText);
         var myObj = JSON.parse(this.responseText);
-        document.getElementById("demob" + x).innerHTML = myObj.status;
         for (a in myObj.job_data){
           z += "Job Type: " + myObj.job_data[a].job_type + " "
           z += "Cursor: " + myObj.job_data[a].cursor + " "
@@ -95,7 +94,7 @@ function thumbsup(key){
           category.push(myObj.job_data[a].category)
           job_title.push(myObj.job_data[a].job_title)
         }
-
+        document.getElementById("demob" + x).innerHTML = job_description[0];
         x++
 
         console.log("x-value after thumbs up and add: ", x)
