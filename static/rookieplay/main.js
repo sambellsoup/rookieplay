@@ -85,10 +85,13 @@ function thumbsup(key){
         document.getElementById("demob" + x).innerHTML = "Job Title: " + job_title[0];
         document.getElementById("democ" + x).innerHTML = "Location: " + city[0] + "," + state[0];
         document.getElementById("demod" + x).innerHTML = "Posted: " + post_date[0];
-        document.getElementById("demoe" + x).innerHTML = "Apply: " + url[0];
+        document.getElementById("demoe" + x).innerHTML = '<a href="' url[0] '">' Apply: " + url[0]+ '</a>';
         document.getElementById("demof" + x).innerHTML = "Company Name: " + company_name[0];
         document.getElementById("demog" + x).innerHTML = "Job Description: " + job_description[0];
         x++
+
+        document.getElementsByTagName('body')[0].innerHTML += '<a href="'+desiredLink+'">'+desiredText+'</a>';
+
 
         console.log("x-value after thumbs up and add: ", x)
       }
