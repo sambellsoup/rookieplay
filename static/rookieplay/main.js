@@ -18,8 +18,7 @@ var job_title = []
 // console.log({{ client_auth_key_value | safe }})
 
 
-// client_id_value = 'rooki_jp_sandbox_e7fea44cf2'
-// client_auth_key_value = 't2PM7wVV5Ij2wyJ-caRNuQEB6JsFImTjitzX60UElyY'
+
 
 
 /*
