@@ -41,6 +41,7 @@ function thumbsup(key){
     thumbs_up_list.push(jobs[key]);
     // Use job title to conduct google search for links to live job ads
     var q = jobs[key]
+    console.log(typeof q)
     // window.open('https://serpapi.com/search.json?engine=google_jobs&q=' + q + '+new+york&hl=en')
     document.getElementById("demoa" + x).innerHTML = q
 
