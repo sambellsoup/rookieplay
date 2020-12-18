@@ -105,7 +105,7 @@ function thumbsup(key){
         {
           'query_string': {
             'default_field': 'job_title',
-            'query': '\'q\''
+            'query': 'q'
           }
         },
         {
