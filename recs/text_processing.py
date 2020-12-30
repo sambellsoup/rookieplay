@@ -85,7 +85,7 @@ def text_to_bagofwords(df):
 
 def join_and_condense(df):
     # job_descriptions = pd.read_csv('data/job_descriptions.csv', index_col=0)
-    with open('recs/pkl/job_descriptions.pkl', 'rb') as f:
+    with open('recs/pkl/job_descriptions_dec2020.pkl', 'rb') as f:
         job_descriptions = pickle.load(f)
     job_descriptions = job_descriptions.append(df)
     recommend_df = job_descriptions[['title', 'bag_of_words']]
