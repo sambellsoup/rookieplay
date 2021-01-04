@@ -76,9 +76,10 @@ def upload(request):
         context['recommendation_2'] = final_jobs[2]
 
     if request.method == 'GET':
-        title = request.GET.get['q']
+        # title = request.GET['q']
         test = 'test'
         print("You did a get request.")
+        # print("This was from the get request: " + title)
 
 
    # if request.method == 'GET':

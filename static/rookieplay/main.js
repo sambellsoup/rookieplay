@@ -45,10 +45,15 @@ function thumbsup(key){
     // window.open('https://serpapi.com/search.json?engine=google_jobs&q=' + q + '+new+york&hl=en')
     document.getElementById("demoa" + x).innerHTML = q
 
+
     // Replace old job title with a new job title to receive judgment from user
     jobs[key] = jobs_bank[0]
     document.getElementById("menu" + key).innerHTML = jobs_bank[0]
+
+    // Removes job from list
     jobs_bank.splice(0, 1)
+
+
 
 
     var request = new XMLHttpRequest();
@@ -163,9 +168,16 @@ function thumbsup(key){
 */
 
 
-    $(function (){
 
-        $(".btn").click(function(){
+
+
+      };
+    }
+
+    $(".thumb-up").click(function(){
+      console.log("This is a test for the job title inside the ajax function.", q)
+      var job_title;
+      job_title = $(this).attr("")
           $.ajax({
             url: '',
             type: 'get',
@@ -178,8 +190,3 @@ function thumbsup(key){
             }
           });
         });
-
-      });
-    }
-
-}
