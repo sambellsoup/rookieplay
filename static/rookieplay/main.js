@@ -177,7 +177,7 @@ function thumbsup(key){
     $(".thumb-up").click(function(){
       console.log("This is a test for the job title inside the ajax function.", q)
       var job_title;
-      job_title = $(this).attr("")
+      job_title = q
           $.ajax({
             url: '',
             type: 'get',
