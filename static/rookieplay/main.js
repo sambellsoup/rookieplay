@@ -65,10 +65,11 @@ function thumbsup(key){
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
-        console.log('Status:', this.status);
-        console.log('Headers:', this.getAllResponseHeaders());
-        console.log('Body:', this.responseText);
-        console.log("typeof test: ", typeof this.responseText);
+        console.log("Job Title: " + q)
+        // console.log('Status:', this.status);
+        // console.log('Headers:', this.getAllResponseHeaders());
+        // console.log('Body:', this.responseText);
+        // console.log("typeof test: ", typeof this.responseText);
         var myObj = JSON.parse(this.responseText);
         for (a in myObj.job_data){
           job_type.push(myObj.job_data[a].job_type)
@@ -84,7 +85,7 @@ function thumbsup(key){
           category.push(myObj.job_data[a].category)
           job_title.push(myObj.job_data[a].job_title)
         }
-        console.log(job_title)
+        // console.log(job_title)
 
         document.getElementById("demob" + x).innerHTML = "Job Title: " + job_title[0];
         document.getElementById("democ" + x).innerHTML = "Location: " + city[0] + "," + state[0];
