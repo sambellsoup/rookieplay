@@ -66,6 +66,8 @@ function thumbsup(key){
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
         console.log("Job Title: " + q)
+
+
         // console.log('Status:', this.status);
         // console.log('Headers:', this.getAllResponseHeaders());
         // console.log('Body:', this.responseText);
