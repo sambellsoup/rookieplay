@@ -7,6 +7,16 @@
 {% extends 'recs/base.html' %}
 <body>
 
+{% block javascript %}
+
+  <script>
+    $("#thumbs-up-0").click(function() {
+      console.log( $(this).val() );
+    });
+  </script>
+
+{% endblock %}
+
 {% block content %}
 
 <p>RookiePlay lets your resume speak for itself</p>
