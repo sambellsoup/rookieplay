@@ -65,7 +65,7 @@ function thumbsup(key){
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
-        console.log("Job Title: " + q)
+        // console.log("Job Title: " + q)
 
 
         // console.log('Status:', this.status);
@@ -98,7 +98,7 @@ function thumbsup(key){
         x++
 
 
-        console.log("x-value after thumbs up and add: ", x)
+        // console.log("x-value after thumbs up and add: ", x)
       }
     };
 

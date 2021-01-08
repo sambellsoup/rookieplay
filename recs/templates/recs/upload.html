@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <title>Rookieplay--Upload</title>
-</head>
-{% extends 'recs/base.html' %}
-<body>
-
-{% block javascript %}
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-    // $("#thumbs-up-0").click(function() {
-      // console.log(q);
-    // });
+  $(document).ready(function(){
+    $("#thumbs-up-0").click(function() {
+      console.log(q);
+    });
+  });
   $(document).ready(function(){
     $("p").click(function(){
       $(this).hide();
     });
   });
   </script>
+</head>
+{% extends 'recs/base.html' %}
 
-{% endblock %}
+<body>
+
 
 {% block content %}
 
@@ -32,7 +32,8 @@
 
   <button type="submit">Upload & Analyze</button>
 </form>
-<p>Please allow the system to process your document for up to 15 seconds.</p>
+<p>Please allow the system to process your document for up to 1005 seconds.</p>
+<p> omg click on me omg  </p>
 
 
 
@@ -138,7 +139,7 @@
   onMouseOut="this.src='https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/Up_W.png'"
     ></button>
 
-<p> omg click on me omg  </p>
+
 
 <br></br>
 <a href=""><button type="button" class="btn btn-primary" id="refresh">refresh page</button></a>
