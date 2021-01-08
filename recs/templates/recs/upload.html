@@ -10,9 +10,14 @@
 {% block javascript %}
 
   <script>
-    $("#thumbs-up-0").click(function() {
-      console.log(q);
+    // $("#thumbs-up-0").click(function() {
+      // console.log(q);
+    // });
+  $(document).ready(function(){
+    $("p").click(function(){
+      $(this).hide();
     });
+  });
   </script>
 
 {% endblock %}
@@ -53,7 +58,7 @@
   function myFunction(value) {
     text += "<li>" + value + "</li>";
   }
-  
+
 
       // add job to list
       // send next job title in the jobs list to whichever menu was downvoted //
@@ -133,7 +138,7 @@
   onMouseOut="this.src='https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/Up_W.png'"
     ></button>
 
-
+<p> omg click on me omg  </p>
 
 <br></br>
 <a href=""><button type="button" class="btn btn-primary" id="refresh">refresh page</button></a>
