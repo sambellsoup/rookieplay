@@ -162,6 +162,12 @@ USE_TZ = True
     # os.path.join(BASE_DIR, 'static/rookieplay'),
 # )
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_URL = 'login'
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
 
 BOOTSTRAP3 = {
 'include_jquery': True,
