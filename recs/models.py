@@ -47,3 +47,9 @@ class Entry(models.Model):
 class Upload(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     file = models.FileField()
+
+class Teacher(models.Model):
+
+    name = models.CharField(max_length=80)
+
+    age = models.IntegerField()
