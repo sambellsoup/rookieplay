@@ -111,6 +111,10 @@ def db(request):
 
     return render(request, "recs/db.html", {"greetings": greetings})
 
+def privacy(request):
+    """ Display privacy policy """
+    return render(request, 'recs/privacy.html', context)
+
 def topics(request):
     """Show all topics."""
     topics = Topic.objects.order_by('date_added')
