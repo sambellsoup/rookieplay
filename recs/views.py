@@ -115,6 +115,10 @@ def privacy(request):
     """ Display privacy policy """
     return render(request, 'recs/privacy.html')
 
+def terms(request):
+    """ Display privacy policy """
+    return render(request, 'recs/terms.html')
+
 def topics(request):
     """Show all topics."""
     topics = Topic.objects.order_by('date_added')

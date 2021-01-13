@@ -16,6 +16,8 @@ urlpatterns = [
 
     path('legal/privacy/', views.privacy, name='privacy'),
 
+    path('legal/terms/', views.terms, name='terms'),
+
     # path('thumbs-up/', views.thumbsup, name='thumbsup'),
 
     # Show all topics.
