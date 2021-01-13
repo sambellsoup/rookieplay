@@ -113,7 +113,7 @@ def db(request):
 
 def privacy(request):
     """ Display privacy policy """
-    return render(request, 'recs/privacy.html', context)
+    return render(request, 'recs/privacy.html')
 
 def topics(request):
     """Show all topics."""

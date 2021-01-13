@@ -14,7 +14,7 @@ urlpatterns = [
 
     path('', views.upload, name='upload'),
 
-    path('legal/privacy/', views.privacy, name='privacy')
+    path('legal/privacy/', views.privacy, name='privacy'),
 
     # path('thumbs-up/', views.thumbsup, name='thumbsup'),
 
