@@ -124,6 +124,18 @@ else:
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
@@ -211,3 +223,8 @@ AWS_S3_FILE_OVERWRITE = False
 # JobsPikr settings
 JOBSPIKR_API_ID = os.environ.get('JOBSPIKR_API_ID')
 JOBSPIKR_API_KEY = os.environ.get('JOBSPIKR_API_KEY')
+
+AUTHENTICATION_BACKENDS = (
+ 'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',
+ )

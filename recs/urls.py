@@ -12,7 +12,9 @@ urlpatterns = [
     # Home Page
     # path('', views.index, name='index'),
 
-    path('', views.upload, name='upload'),
+    path('upload', views.upload, name='upload'),
+
+    path('', views.index, name='index'),
 
     path('legal/privacy/', views.privacy, name='privacy'),
 
