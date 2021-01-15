@@ -19,17 +19,17 @@
 
 <body>
 
-
+  <p>
+    <a href="{% url 'recs:topics' %}">Profile</a>
+    <a href="{% url 'recs:upload' %}">Upload</a>
+    <a href="{% url 'recs:privacy' %}">Privacy Policy</a>
+    <a href="{% url 'recs:terms' %}">Terms of Service</a>
+  </p>
 
 </body>
 
 
-<p>
-  <a href="{% url 'recs:topics' %}">Profile</a>
-  <a href="{% url 'recs:upload' %}">Upload</a>
-  <a href="{% url 'recs:privacy' %}">Privacy Policy</a>
-  <a href="{% url 'recs:terms' %}">Terms of Service</a>
-</p>
+
 
 {% block content %}{% endblock content %}
 

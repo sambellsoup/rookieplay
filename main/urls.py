@@ -17,7 +17,7 @@ import recs.views
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
-     path('', TemplateView.as_view(template_name="recs/index.html")),
+     path('', TemplateView.as_view(template_name="recs\index.html")),
     path("db/", recs.views.db, name="db"),
     path("admin/", admin.site.urls),
     path('users/', include('users.urls')),
