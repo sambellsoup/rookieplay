@@ -1,18 +1,20 @@
 """Defines URL patterns for recs."""
 
 from django.conf.urls import include, url
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 app_name = 'recs'
 urlpatterns = [
     # Home Page
     # path('', views.index, name='index'),
+    path('', TemplateView.as_view(template_name="recs/index.html")),
 
-    path('upload', views.upload, name='upload'),
+    path('upload', views.upload, name='recs/upload.html'),
 
     path('', views.index, name='index'),
 
