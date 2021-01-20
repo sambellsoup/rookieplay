@@ -97,9 +97,9 @@ def upload(request):
         # job title, company, link to job application, description, date posted, location, full-time/part-time, remote?
     return render(request, 'recs/upload.html', context)
 
-# def index(request):
+def index(request):
     # return HttpResponse('Hello from Python!')
-    # return render(request, "recs/index.html")
+    return render(request, "recs/index.html")
 
 
 def db(request):

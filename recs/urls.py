@@ -12,11 +12,11 @@ app_name = 'recs'
 urlpatterns = [
     # Home Page
     # path('', views.index, name='index'),
-    path('', TemplateView.as_view(template_name="recs/index.html")),
+    path('', views.index, name="index"),
 
-    path('upload', views.upload, name='recs/upload.html'),
+    path('upload/', views.upload, name='upload'),
 
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
 
     path('legal/privacy/', views.privacy, name='privacy'),
 
