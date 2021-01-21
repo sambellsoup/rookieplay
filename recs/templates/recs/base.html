@@ -20,10 +20,17 @@
 <body>
 
   <p>
+    {% if user.is_authenticated %}
+      Hello, {{ user.username }}.</p>
+  <p>    
     <a href="{% url 'recs:topics' %}">Profile</a>
     <a href="{% url 'recs:upload' %}">Upload</a>
+    {% else %}
+      <a href="{% url 'recs:index' %}">log in</a>
+    {% endif %}
     <a href="{% url 'recs:privacy' %}">Privacy Policy</a>
     <a href="{% url 'recs:terms' %}">Terms of Service</a>
+
   </p>
 
 </body>
