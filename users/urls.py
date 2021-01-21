@@ -8,12 +8,9 @@ from . import views
 app_name = 'users'
 urlpatterns = [
     # Login page
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'),
-    name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     # Logout Page
-    path('logout/',
-    auth_views.LogoutView.as_view(template_name='users/logout.html'),
-    name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     # Registration page
     path('register/', views.register, name='register')
 ]
