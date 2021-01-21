@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.linkedin_oauth2',
     'allauth.socialaccount.providers.github',
     'django_cleanup.apps.CleanupConfig',
 ]
@@ -136,7 +136,7 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'linkedin': {
         'SCOPE': [
-            'r_basicprofile',
+            'r_liteprofile',
             'r_emailaddress'
         ],
         'PROFILE_FIELDS': [
