@@ -35,7 +35,7 @@ import os
 from time import time
 
 # Create your views here.
-
+@login_required
 def upload(request):
     context = {}
     if request.method == 'POST':

@@ -21,12 +21,17 @@
 
   <p>
     {% if user.is_authenticated %}
-      Hello, {{ user.username }}.</p>
-  <p>    
+      Hello, {{ user.username }}.
+      <a href="{% url 'users:logout' %}">Log Out</a>
+  </p>
+
+  <p>
     <a href="{% url 'recs:topics' %}">Profile</a>
     <a href="{% url 'recs:upload' %}">Upload</a>
+
     {% else %}
-      <a href="{% url 'recs:index' %}">log in</a>
+      <a href="{% url 'users:register' %}">Register</a>
+      <a href="{% url 'recs:index' %}">Log In</a>
     {% endif %}
     <a href="{% url 'recs:privacy' %}">Privacy Policy</a>
     <a href="{% url 'recs:terms' %}">Terms of Service</a>

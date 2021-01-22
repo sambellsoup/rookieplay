@@ -1,4 +1,4 @@
-{% extends "rookieplays/base.html" %}
+{% extends "recs/base.html" %}
 
 {% block content %}
 
@@ -7,7 +7,7 @@
     {{ form.as_p }}
 
     <button name="submit">register</button>
-    <input type="hidden" name="next" value="{% url 'rookieplays:index' %}" />
+    <input type="hidden" name="next" value="{% url 'recs:upload' %}" />
   </form>
 
 {% endblock content %}
