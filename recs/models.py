@@ -19,13 +19,13 @@ class Topic(models.Model):
 
 class Document(models.Model):
     """Document uploaded by user to be analyzed"""
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
-    created_at = models.DateTimeField(default=date.today)
-    title = models.CharField(max_length=100)
-    document = models.FileField(null=True, upload_to='uploaded_documents/')
+    document = models.FileField(null=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def __str__(self):
-        return self.title
+        return self.document
 
 class Entry(models.Model):
     """Something specific learned about a topic"""
