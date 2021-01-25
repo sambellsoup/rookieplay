@@ -146,9 +146,10 @@ SOCIALACCOUNT_PROVIDERS = {
             'email-address',
             'picture-url',
             'public-profile-url',
-        ]
+        ],
     }
 }
+SOCIALACCOUNT_QUERY_EMAIL = True
 
 AUTH_PASSWORD_VALIDATORS = [
     {
