@@ -3,7 +3,17 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
+def login(request):
+    return render(reques, 'users/login.html')
+
+@login_required
+def account(request):
+    context = {
+        'account_page': "active",
+    }
+    return render(request, 'users/account.html', context)
 
 def register(request):
     """Register a new user."""

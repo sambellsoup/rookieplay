@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.linkedin_oauth2',
     'allauth.socialaccount.providers.github',
     'django_cleanup.apps.CleanupConfig',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -192,7 +193,7 @@ USE_TZ = True
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = '/users/login/'
-SITE_ID = 3
+SITE_ID = 5
 
 # Site ID 2 is localhost
 # Site ID 3 is 127.0.0.1:800
@@ -235,6 +236,27 @@ DEFAULT_FILE_STORAGE = 'hello_django.storage_backends.PublicMediaStorage'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+PWA_APP_NAME = 'Rookieplay'
+PWA_APP_DESCRIPTION = 'Your job finder'
+# PWA_APP_THEME_COLOR = hex code
+# PWA_APP_BACKGROUND_COLOR = hex code
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+# PWA_APP_ICONS = [{'src:'', 'sizes': '160x160'}]
+# PWA_APP_ICONS_APPLE = [{'src:'', 'sizes': '160x160'}]
+# PWA_APP_SPLASH_SCREEN = [{'src':'.png', 'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pizel-ratio:2)'}]
+# PWA_APP_DIR = 'ltr'
+# PWA_APP_LANG = 'en-US'
+## To disable the console.log on browser set debug mode to false!
+# PWA_APP_DEBUG_MODE = False
+
+
+
+
 # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 DEFAULT_FILE_STORAGE = 'main.storages.MediaStore'
 

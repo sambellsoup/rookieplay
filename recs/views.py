@@ -7,7 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
 from django.conf import settings as conf_settings
 
-from .models import Greeting, Document, Topic, Entry, Upload
+from .models import Greeting, Topic, Entry, Upload
 from .forms import TopicForm, EntryForm
 
 # recommendation packages

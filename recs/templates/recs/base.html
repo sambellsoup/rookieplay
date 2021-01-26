@@ -1,52 +1,234 @@
-{% load bootstrap3 %}
+{% load static %} {% load pwa %}
 
 <!DOCTYPE html>
 <html lang="en"
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8"/>
+    {% progressive_web_app_meta %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/rookieplay_logo.png"
+    />
+  <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato"
+    />
 
-  <title>RookiePlay</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://dl.dropboxusercontent.com/s/ecyb1drs5j1jyjf/styles.css?dl=0"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://dl.dropboxusercontent.com/s/xmxsoypfvfvsisb/footer.css?dl=0"
+    />
 
-  {% bootstrap_css %}
-  {% bootstrap_javascript %}
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+      body {
+        font-family: "Lato";
+        font-size: 20px;
+      }
+    </style>
 
+    {% block cssfiles %}{% endblock cssfiles %}
+    <title>RookiePlay</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
 
   <p>
-    {% if user.is_authenticated %}
-      Hello, {{ user.username }}.
-      <a href="{% url 'users:logout' %}">Log Out</a>
-  </p>
 
-  <p>
-    <a href="{% url 'recs:topics' %}">Profile</a>
-    <a href="{% url 'recs:upload' %}">Upload</a>
-
-    {% else %}
-      <a href="{% url 'users:register' %}">Register</a>
-      <a href="{% url 'recs:index' %}">Log In</a>
-    {% endif %}
     <a href="https://www.rookieplay.com">
       <img alt="Rookieplay logo" src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/rookieplay_logo.png"
       height="91" width="101">
     </a>
-    <a href="{% url 'recs:privacy' %}">Privacy Policy</a>
-    <a href="{% url 'recs:terms' %}">Terms of Service</a>
+
 
   </p>
 
-</body>
+  <body>
+     {% if not rec_navbar %}
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+       <button
+         class="navbar-toggler"
+         type="button"
+         data-toggle="collapse"
+         data-target="#navbarNavAltMarkup"
+         aria-controls="navbarNavAltMarkup"
+         aria-expanded="false"
+         aria-label="Toggle navigation"
+       >
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+         <div class="navbar-nav">
+           <a class="nav-item nav-link {{ home_page }}" href=None>Job Search</a>
+
+           <a class="nav-item nav-link {{ privacy_policy }}" href="{% url 'recs:privacy' %}">Privacy Policy</a>
+           <a class="nav-item nav-link {{ terms_service }}" href="{% url 'recs:terms' %}">Terms of Service</a>
+           <a class="nav-item nav-link {{ profile_page }}" href=None>My Profile</a>
+           <a class="nav-item nav-link {{ intel_page }}" href=None>Get Relevant Jobs</a>
+           <a class="nav-item nav-link {{ account_page }}" href=None>My Account</a>
+
+           {% if user.is_authenticated %}
+
+             Hello, {{ user.username }}.
+             <a href="{% url 'users:logout' %}">Log Out</a>
+         </p>
+
+         <p>
+           <a href="{% url 'recs:topics' %}">Profile</a>
+           <a href="{% url 'recs:upload' %}">Upload</a>
 
 
+           {% else %}
+           <a
+             class="nav-item nav-link btn btn-success ml-4 mr-4 text-light"
+             href="{% url 'users:login' %}"
+             >Login</a
+           >
+           <a class="nav-item nav-link" href=None
+             >Recruiters/ Employers</a
+           >
+           {% endif %}
+         </div>
+       </div>
+     </nav>
+     {% else %}
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+       <a class="navbar-brand" href="{% url 'detail-recruiters' %}">
+         <img
+           src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/rookieplay_logo.png"
+           width="30"
+           height="30"
+           class="d-inline-block align-top mr-3"
+           alt=""
+         /><b>Rookieplay</b>
+       </a>
+       <button
+         class="navbar-toggler"
+         type="button"
+         data-toggle="collapse"
+         data-target="#navbarNavAltMarkup"
+         aria-controls="navbarNavAltMarkup"
+         aria-expanded="false"
+         aria-label="Toggle navigation"
+       >
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+         <div class="navbar-nav">
 
 
-{% block content %}{% endblock content %}
+           {% if user.is_authenticated %}
+           <a
+             class="nav-item nav-link btn btn-danger ml-4 mr-4 text-light"
+             href="{% url 'users:logout' %}"
+             >Logout</a
+           >
+           {% else %}
+
+           <a
+             class="nav-item nav-link btn btn-success ml-4 mr-4 text-light"
+             href="{% url 'users:login' %}"
+             >Login</a
+           >
+           {% endif %}
+           <a class="nav-item nav-link" href="{% url 'home' %}"
+             >Job Seekers/Candidates</a
+           >
+         </div>
+       </div>
+     </nav>
+     {% endif %}
+     <div class="container">{% block content %}{% endblock content %}</div>
+
+     <footer>
+       <hr my-2 />
+       <div class="row">
+         <div class="col-sm-6 col-md-4 footer-navigation">
+           <h3>Rookieplay</h3>
+           <p class="links">
+             <a href=None>Job Seekers</a
+             ><strong> · </strong
+             ><a href=None>Recruiters</a
+             ><strong> · </strong><a href=None>Pricing</a>
+             <strong> · </strong
+             ><a href="{% url 'recs:terms' %}">Terms of Service</a>
+             <strong> · </strong
+             ><a href="{% url 'recs:privacy' %}">Privacy Policy</a>
+           </p>
+           <p class="company-name">
+             Rookieplay @ 2021<br /><small class="text-muted"
+               >All rights reserved!</small
+             ><br />
+           </p>
+         </div>
+         <div class="col-sm-6 col-md-4 footer-contacts">
+           <div>
+             <span class="fa fa-map-marker footer-contacts-icon"></span>
+             <p><span class="new-line-span"></span>New York, New York</p>
+           </div>
+
+           <div>
+             <i class="fa fa-envelope footer-contacts-icon"></i>
+             <p><a href="#" target="_blank">sb@rookieplay.com</a></p>
+           </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="col-md-4 footer-about">
+           <h4>About the company</h4>
+           <p>
+             Rookieplay aims to make finding jobs easier. Our goal is to save
+             time for job seekers. We are working to innovate and develop new solutions to
+             matching the perfect person to their perfect job.
+           </p>
+           <div class="social-links social-icons">
+             <a href="#"><i class="fa fa-facebook"></i></a
+             ><a href="#"><i class="fa fa-twitter"></i></a
+             ><a href="https://www.linkedin.com/company/rookieplay/"
+               ><i class="fa fa-linkedin"></i
+             ></a>
+           </div>
+         </div>
+       </div>
+       <p class="text-center" style="font-size: 12px">
+         <a href="https://www.freepik.com/vectors/"
+           >Image vectors by - www.freepik.com</a
+         >
+       </p>
+     </footer>
+
+     <!-- JS Files -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+     {% block jsfiles %}{% endblock jsfiles %}
+   </body>
+
 
 </html>

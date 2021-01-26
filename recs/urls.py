@@ -12,9 +12,9 @@ app_name = 'recs'
 urlpatterns = [
     # Home Page
     # path('', views.index, name='index'),
-    path('', views.index, name="index"),
+    path('', views.upload, name="upload"),
 
-    path('upload/', views.upload, name='upload'),
+    path('register/', views.index, name='index'),
 
     # path('', views.index, name='index'),
 

@@ -1,11 +1,4 @@
-{% extends "rookieplays/base.html" %}
-{% load bootstrap3 %}
-
-{% block header %}
-  <h2>Log in to your account.</h2>
-{% endblock header %}
-
-{% block content %}
+{% extends "recs/base.html" %} {% load socialaccount %} {% block content %}
 
   {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
@@ -14,11 +7,47 @@
   <form method="post" action="{% url 'users:login' %}">
     {% csrf_token %}
     {{ form.as_p }}
-    {% bootstrap_form form %}
 
-    <button name="submit" >log in</button>
+    <button name="submit" >sign in</button>
 
-    <input type="hidden" name="next" value="{% url 'rookieplays:upload' %}" />
+    <input type="hidden" name="next" value="{% url 'recs:upload' %}" />
   </form>
 
-{% endblock content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-md-10 col-lg-7 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h3 class="text-center"><b>Sign In</b></h3>
+            <br />
+            <form class="form-signin">
+              <div class="form-group">
+                <a
+                  class="btn btn-outline-secondary btn-block"
+                  href="{% provider_login_url 'google' %}"
+                  ><img
+                    src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/google_logo.png"
+                    alt="Google"
+                    height="30"
+                    class="d-inline-block mr-2"
+                  />Sign In With Google</a
+                >
+                <br />
+                <a
+                  class="btn btn-outline-dark btn-block"
+                  href="{% provider_login_url 'linkedin_oauth2' %}"
+                  ><img
+                    src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/linkedin_logo.png"
+                    alt="Linkedin"
+                    height="30"
+                    class="d-inline-block mr-2"
+                  />Sign In With LinkedIn</a
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

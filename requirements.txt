@@ -25,6 +25,7 @@ django-environ==0.4.5
 django-filter==2.4.0
 django-heroku==0.3.1
 django-matplotlib==0.1
+django-pwa==1.0.10
 django-redis-cache==1.6.5
 django-s3-storages-utils==0.1.0
 django-s3direct==1.1.8
