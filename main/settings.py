@@ -122,6 +122,7 @@ else:
         }
     }
 
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -193,7 +194,7 @@ USE_TZ = True
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = '/users/login/'
-SITE_ID = 6
+SITE_ID = 7
 
 # Site ID 2 is localhost
 # Site ID 3 is 127.0.0.1:800
