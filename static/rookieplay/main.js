@@ -65,12 +65,12 @@ function thumbsup(key){
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
-        // console.log("Job Title: " + q)
+        console.log("Job Title: " + q)
 
 
-        // console.log('Status:', this.status);
-        // console.log('Headers:', this.getAllResponseHeaders());
-        // console.log('Body:', this.responseText);
+        console.log('Status:', this.status);
+        console.log('Headers:', this.getAllResponseHeaders());
+        console.log('Body:', this.responseText);
         // console.log("typeof test: ", typeof this.responseText);
         var myObj = JSON.parse(this.responseText);
         for (a in myObj.job_data){
@@ -101,26 +101,26 @@ function thumbsup(key){
         // console.log("x-value after thumbs up and add: ", x)
       }
     };
-
+    console.log("this is q: " + q)
     var body = {
   'size': 10,
   'format': 'json',
   'search_query_json': {
     'bool': {
       'must': [
-        {
-          'query_string': {
-            'default_field': 'job_title',
-            'query': q
-          }
-        },
-        {
-          'query_string': {
-            'fields': [
+                {
+    'query_string': {
+    'default_field': 'job_title',
+    'query': q
+                    }
+                },
+                {
+    'query_string': {
+    'fields': [
               'country',
               'inferred_country'
-            ],
-            'query': '\'United States\' OR \'USA\' OR \'United States\' OR \'US\''
+              ],
+    'query': '\'United States\' OR \'USA\' OR \'US\''
           }
         },
         {
@@ -133,12 +133,13 @@ function thumbsup(key){
     }
   }
 };
+
     request.send(JSON.stringify(body));
 
 
 
 
-/*
+
         for (a in myObj.job_data) {
 	         z += "Job Type: " + myObj.job_data[a].job_type + " "
            z += "Cursor: " + myObj.job_data[a].cursor + " "
@@ -165,7 +166,7 @@ function thumbsup(key){
 	         category.push(myObj.job_data[a].category)
 	         job_title.push(myObj.job_data[a].job_title)
          }
-*/
+
 
 
 
