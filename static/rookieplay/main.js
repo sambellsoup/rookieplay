@@ -124,6 +124,14 @@ function thumbsup(key){
           }
         },
         {
+             "range": {
+               "post_date": {
+                 "gte": "2019-12-28",
+                 "lte": "2020-01-28"
+               }
+             }
+           }
+        {
           'query_string': {
      "default_field": "has_expired",
      "query": false
