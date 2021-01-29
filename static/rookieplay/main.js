@@ -105,42 +105,72 @@ function thumbsup(key){
     var body = {
   'size': 10,
   'format': 'json',
-  'search_query_json': {
-    'bool': {
-      'must': [
-                {
-    'query_string': {
-    'default_field': 'job_title',
-    'query': q
-                    }
-                },
-                {
-    'query_string': {
-    'fields': [
-              'country',
-              'inferred_country'
-              ],
-    'query': '\'United States\' OR \'USA\' OR \'US\''
-          }
-        },
-        {
-             "range": {
-               "post_date": {
-                 "gte": "2019-12-28",
-                 "lte": "2020-01-28"
+  "search_query_json": {
+     "bool": {
+       "must": [
+         {
+           "query_string": {
+             "fields": [
+               "job_title",
+               "inferred_job_title"
+             ],
+             "query": q
+           }
+         },
+         {
+           "query_string": {
+             "default_field": "job_type",
+             "query": "*"
+           }
+         },
+         {
+           "query_string": {
+             "default_field": "company_name",
+             "query": "*"
+           }
+         },
+         {
+           "bool": {
+             "should": [
+               {
+                 "bool": {
+                   "must": [
+                     {
+                       "query_string": {
+                         "fields": [
+                           "country",
+                           "inferred_country"
+                         ],
+                         "query": "\"USA\" OR \"US\""
+                       }
+                     }
+                   ]
+                 }
                }
+             ]
+           }
+         },
+         {
+           "range": {
+             "post_date": {
+               "gte": "2020-12-01",
+               "lte": "2021-01-29"
              }
            }
-        {
-          'query_string': {
-     "default_field": "has_expired",
-     "query": false
-  }
-        }
-      ]
-    }
-  }
-};
+         }
+       ],
+       "must_not": [
+         null,
+         {
+           "query_string": {
+             "default_field": "company_name",
+             "query": "Unspecified"
+           }
+         }
+       ]
+     }
+   }
+ }
 
     request.send(JSON.stringify(body));
 
