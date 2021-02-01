@@ -190,7 +190,7 @@ function thumbsup(key){
 	         z += "Company Name: " + myObj.job_data[a].company_name + " "
 	         z += "Category: " + myObj.job_data[a].category + " "
 	         z += "Job Title: " + myObj.job_data[a].job_title + " "
-           console.log(z)
+
 
            job_type.push(myObj.job_data[a].job_type)
            cursor.push(myObj.job_data[a].cursor)
@@ -203,6 +203,7 @@ function thumbsup(key){
 	         company_name.push(myObj.job_data[a].company_name)
 	         category.push(myObj.job_data[a].category)
 	         job_title.push(myObj.job_data[a].job_title)
+           console.log(city)
          }
 
 
