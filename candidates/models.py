@@ -14,6 +14,8 @@ CHOICES = (
     ('Internship', 'Internship'),
     ('Remote', 'Remote'),
 )
+
+# Contains all information about candidate
 class Profile(models.Model):
     user = models.OneToOneField(
     User, on_delete=models.CASCADE, primary_key=True, related_name='profile')
@@ -35,11 +37,14 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.Username
 
+# Contains skill and foreign key linking to the User
 class Skill(models.Model):
     skill = models.CharField(max_length=200)
     user = models.ForeignKey(
         User, related_name='skills', on_delete=models.CASCADE)
 
+# Job links to the job model from recruiters, user links with User Model
+# and date uses current time to store jobs saved by the user
 class SavedJobs(models.Model):
     job = models.ForeignKey(
         Job, related_name='saved_job', on_delete=models.CASCADE)
@@ -50,6 +55,8 @@ class SavedJobs(models.Model):
     def __str__(self):
         return self.job.title
 
+# Job links this to the job model from the recruiters' app, user links with the User model,
+# and date uses the current time to store the jobs applied by a user.
 class AppliedJobs(models.Model):
     job=models.ForeignKey(
         Job, related_name='applied_job', on_delete=models.CASCADE)

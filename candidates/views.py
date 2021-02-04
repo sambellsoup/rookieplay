@@ -1,12 +1,13 @@
 from django.shortcuts import render
 
-# Create your views here.
+# Serves the homepage
 def home(request):
     context = {
         'home_page': "active",
     }
     return render(request, 'candidates/home.html', context)
 
+# Allows user to search for jobs
 def job_search_list(request):
     query = request.GET.get('p')
     loc = request.GET.get('q')
@@ -51,6 +52,9 @@ def job_search_list(request):
     }
     return render(request, 'candidates/job_search_list.html', context)
 
+# Displays the job post in detail.
+# Checks whether or not the user has applied to the job and if the user has saved the job
+# Makes a list of similar jobs
 def job_detail(request, slug):
     job = get_object_or_404(Job, slug=slug)
     apply_button = 0
@@ -89,12 +93,15 @@ SavedJobs.objects.filter(user=request.user).filter(job=job).ecxists():
     'profile': profile, 'apply_button': apply_button, 'save_button': save_button,
     'relevant_jobs': relevant_jobs, 'canadiate_navbar': 1})
 
+
+#Takes the jobs saved by the user and orders them by date posted and renders it.
 @login_required
 def saved_jobs(request):
     jobs = SavedJobs.objects.filter(
         user=request.user).order_by('-date_posted')
     return render(request, 'candidates/saved_jobs.html', {'jobs': jobs, 'candidate_navbar': 1})
 
+# Displays all jobs the user has applied to. Has a status list containing the status of all applications (selected, passed, pending).
 @login_required
 def applied_jobs(request):
     jobs = AppliedJobs.objects.filter(
@@ -111,6 +118,10 @@ def applied_jobs(request):
     return render(request, 'candidates/applied_jobs.html', {'zipped': zipped,
     'candidate_navbar': 1})
 
+# Shows jobs which suit the skills of the user and matches the job type the user is looking for.
+# Jobs are filtered by the user search and then processes all jobs and get required skills.
+# The skills of the user are compared to the jobs and are matched. If over half match, then the job is recommended.
+# The matching jobs are ordered by percentage match.
 @login_required
 def intelligent_search(request):
     relevant_jobs = []
@@ -146,6 +157,7 @@ def intelligent_search(request):
         }
         return render(request, 'candidates/intelligten_search.html', context)
 
+# Shows all data of the user profile and also the skills the user has. Allows user to add new skills
 @login_required
 def my_profile(request):
     you = request.user
@@ -169,6 +181,7 @@ def my_profile(request):
         }
         return render(request, 'candidates/profile.html', context)
 
+# Allows candidates to edit their profile.
 @login_required
 def edit_profile(request):
     you = request.user
@@ -185,6 +198,7 @@ def edit_profile(request):
     context = {'form': form,}
     return render(request, 'candidates/edit_profile.html', context)
 
+# Allows recruiters to view candidate's profile.
 @login_required
 def profile_view(request, slug):
     p = Profile.objects.filter(slug=slug).first()
@@ -200,6 +214,7 @@ def profile_view(request, slug):
 def candidate_details(request):
     return render(request, 'candidates/details.html')
 
+# Allows user to delete their skills.
 @login_required
 @csrf_exempt
 def delete_skill(request, pk=None):
@@ -209,6 +224,7 @@ def delete_skill(request, pk=None):
             Skill.objects.get(id=skill_id).delete()
         return redirect('my-profile')
 
+# Allows user to save any job they like
 @login_required
 def save_job(request, slug):
     user = request.user
@@ -216,7 +232,8 @@ def save_job(request, slug):
     saved, created = SavedJobs.objects.get_or_create(job=job, user=user)
     return HttpResponseRedirect('/job/{}'.format(job.slug))
 
-login_required
+# Allows candidate to apply to the job they like
+@login_required
 def apply_job(request, slug):
     user = request.user
     job = get_object_or_404(Job, slug=slug)
@@ -224,6 +241,7 @@ def apply_job(request, slug):
     applicant, creation = Applicants.objects.get_or_create(job=job, applicant=user)
     return HttpResponseRedirect('/job/{}'.format(job.slug))
 
+# Allows candidate users to delete a job from the saved jobs list.
 @login_required
 def remove_job(request, slug):
     user = request.user

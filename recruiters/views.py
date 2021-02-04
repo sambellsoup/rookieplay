@@ -155,3 +155,29 @@ def applicant_list(request, slug):
             'job': job,
         }
         return render(request, 'recruiters/applicant_list.html', context)
+
+@login_required
+def selected_list(request, slug):
+    job = get_object_or_404(Job, slug=slug)
+    selected = Selected.objects.filter(job=job).order_by('date_posted')
+    profiles = []
+    for applicant in selected:
+        profile = Profile.objects.filter(user=applicant.applicant).first()
+        profiles.append(profile)
+    context = {
+        'rec_navbar': 1,
+        'profiles': profiles,
+        'job': job,
+    }
+    return render(request, 'recruiters/selected_list.html')
+
+@login_required
+def select_applicant(request, can_id, job_id):
+    job = get_object_or_404(Job, slug=job_id)
+    profile = get_object_or_404(Profile, slug=can_id)
+    user = profile.user
+    selected, created = Selected.objects.get_or_create(job=job, applicant=user)
+    applicant = Applicants.objects.filter(job=job, applicant=user).first()
+    applicant.delete()
+    return
+HttpResponseRedirect('/hiring/job/{}/applicants'.format(job.slug))
