@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+# Serves the recruiter's details page
 def rec_details(request):
     context = {
         'rec_home_page': "active",
@@ -8,6 +8,7 @@ def rec_details(request):
     }
     return render(request, 'recruiters/details.html', context)
 
+# Adds a new job post
 @login_required
 def add_job(request):
     user = request.user
@@ -27,6 +28,7 @@ def add_job(request):
     }
     return render(request, 'recruiters/add_job.html', context)
 
+# Updates an existing job post
 @login_required
 def edit_job(request, slug):
     user = request.user
@@ -46,15 +48,17 @@ def edit_job(request, slug):
     }
     return render(request, 'recruiters/edit_job.html', context)
 
+# Displays all the details of a selected post.
 @login_required
 def job_detail(request, slug):
-    job = get_objec_or_404(Job, slug=slug)
+    job = get_object_or_404(Job, slug=slug)
     context = {
         'job': job,
         'rec_navbar': 1,
     }
     return render(request, 'recruiters/job_detail.html', context)
 
+# Displays all posts by a recruiter
 @login_required
 def all_jobs(request):
     jobs = Job.objects.filter(recruiter=request.user).order_by('-date_posted')
@@ -68,6 +72,8 @@ def all_jobs(request):
     }
     return render(request, 'recruiters/job_posts.html', context)
 
+# Allows a recruiter to search for candidates based on location and job type preferred.
+# Allows recruiters to search database
 @login_required
 def search_candidates(request):
     profile_list = Profile.objects.all()
@@ -109,6 +115,7 @@ def search_candidates(request):
     }
     return render(request, 'recruiters/candidate_search.html', context)
 
+# Allows recruiters to see candidates which are good matches to a particular post.
 @login_required
 def job_candidate_search(request, slug):
     job = get_object_or_404(Job, slug=slug)
@@ -141,6 +148,7 @@ def job_candidate_search(request, slug):
     }
     return render(request, 'recruiters/job_candidate_search.html', context)
 
+# Displays the candidates who have applied for a particular job post.
 @login_required
 def applicant_list(request, slug):
     job = get_object_or_404(Job, slug=slug)
@@ -156,6 +164,7 @@ def applicant_list(request, slug):
         }
         return render(request, 'recruiters/applicant_list.html', context)
 
+# Displays candidates who have appliedfor a particular post but shows candidate's profile
 @login_required
 def selected_list(request, slug):
     job = get_object_or_404(Job, slug=slug)
@@ -171,12 +180,27 @@ def selected_list(request, slug):
     }
     return render(request, 'recruiters/selected_list.html')
 
+# Allows recruiters to select an applicant from the applicant's list.
+# It creates an object for that candidate in the selected list, adds it to the selected list,
+# then deletes it from the applicant's list
 @login_required
 def select_applicant(request, can_id, job_id):
     job = get_object_or_404(Job, slug=job_id)
     profile = get_object_or_404(Profile, slug=can_id)
     user = profile.user
     selected, created = Selected.objects.get_or_create(job=job, applicant=user)
+    applicant = Applicants.objects.filter(job=job, applicant=user).first()
+    applicant.delete()
+    return
+HttpResponseRedirect('/hiring/job/{}/applicants'.format(job.slug))
+
+# Rejects an applicantwho has applied to a particular job post,
+# deleting the candidate from the applicant's list
+@login_required
+def remove_applicant(request, can_id, job_id):
+    job = get_object_or_404(Job, slug=job_id)
+    profile = get_object_or_404(Profile, slug=can_id)
+    user = profile.user
     applicant = Applicants.objects.filter(job=job, applicant=user).first()
     applicant.delete()
     return
