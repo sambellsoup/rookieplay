@@ -9,6 +9,7 @@ from users import views
 admin.autodiscover()
 
 import recs.views
+import candidates.views
 
 # To add a new path, first import the app:
 # import blog

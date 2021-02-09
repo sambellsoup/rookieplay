@@ -91,13 +91,13 @@
        </button>
        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
          <div class="navbar-nav">
-           <a class="nav-item nav-link {{ home_page }}" href=None>Job Search</a>
+           <a class="nav-item nav-link {{ home_page }}" href="{% url 'home' %}">Job Search</a>
 
            <a class="nav-item nav-link {{ privacy_policy }}" href="{% url 'recs:privacy' %}">Privacy Policy</a>
            <a class="nav-item nav-link {{ terms_service }}" href="{% url 'recs:terms' %}">Terms of Service</a>
-           <a class="nav-item nav-link {{ profile_page }}" href=None>My Profile</a>
-           <a class="nav-item nav-link {{ intel_page }}" href=None>Get Relevant Jobs</a>
-           <a class="nav-item nav-link {{ account_page }}" href=None>My Account</a>
+           <a class="nav-item nav-link {{ profile_page }}" href="{% url 'my-profile' %}">My Profile</a>
+           <a class="nav-item nav-link {{ intel_page }}" href="{% url 'intelligent-search' %}">Get Relevant Jobs</a>
+           <a class="nav-item nav-link {{ account_page }}" href="{% url 'account' %}">My Account</a>
 
            {% if user.is_authenticated %}
 

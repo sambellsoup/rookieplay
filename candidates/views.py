@@ -1,4 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Profile, Skill, AppliedJobs, SavedJobs
+from recruiters.models import Job, Applicants, Selected
+from .forms import ProfileUpdateForm, NewSkillForm
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.views.generic import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import get_user_model
+from django.core.paginator import Paginator
 
 # Serves the homepage
 def home(request):
@@ -60,11 +73,9 @@ def job_detail(request, slug):
     apply_button = 0
     save_button = 0
     profile = Profile.objects.filter(user=request.uder).first()
-    if
-AppliedJobs.objects.filter(user=request.user).filter(job=job).exists():
+    if AppliedJobs.objects.filter(user=request.user).filter(job=job).exists():
         apply_button = 1
-    if
-SavedJobs.objects.filter(user=request.user).filter(job=job).ecxists():
+    if SavedJobs.objects.filter(user=request.user).filter(job=job).ecxists():
         save_button = 1
     relevant_jobs = []
     jobs1 = Job.objects.filter(
@@ -133,29 +144,30 @@ def intelligent_search(request):
     my_skills = []
     for i in my_skill_query:
         my_skills.append(i.skill.lower())
-        if profile:
-            jobs = Job.objects.filter(job_type=profile.looking_for).order_by('-date_posted')
-        else:
-            jobs = Job.objects.all()
-        for job in jobs:
-            skills = []
-            sk = str(job.skills_req).split(", ")
-            for i in sk:
-                skills.append(i.strip().lower())
-            common_skills = list(set(my_skills) & set(skills))
-            if (len(common_skills) !=0 and len(common_skills) >= len(skills)//2):
-                relevant_jobs.append(job)
-                common.append(len(common_skills))
-                job_skills.append(len(skills))
-        objects = zip(relvant_jobs, common, job_skills)
-        objects = sorted(objects, key=lambda t: t[1]/t[2], reverse=True)
-        objects = objects[:100]
-        context = {
-            'intel_page': "active",
-            'jobs': objects,
-            'counter': len(relevant_jobs),
-        }
-        return render(request, 'candidates/intelligten_search.html', context)
+    if profile:
+        jobs = Job.objects.filter(
+            job_type=profile.looking_for).order_by('-date_posted')
+    else:
+        jobs = Job.objects.all()
+    for job in jobs:
+        skills = []
+        sk = str(job.skills_req).split(",")
+        for i in sk:
+            skills.append(i.strip().lower())
+        common_skills = list(set(my_skills) & set(skills))
+        if (len(common_skills) != 0 and len(common_skills) >= len(skills)//2):
+            relevant_jobs.append(job)
+            common.append(len(common_skills))
+            job_skills.append(len(skills))
+    objects = zip(relevant_jobs, common, job_skills)
+    objects = sorted(objects, key=lambda t: t[1]/t[2], reverse=True)
+    objects = objects[:100]
+    context = {
+        'intel_page': "active",
+        'jobs': objects,
+        'counter': len(relevant_jobs),
+    }
+    return render(request, 'candidates/intelligent_search.html', context)
 
 # Shows all data of the user profile and also the skills the user has. Allows user to add new skills
 @login_required
@@ -170,16 +182,16 @@ def my_profile(request):
             data.user = you
             data.save()
             return redirect('my-profile')
-        else:
-            form = NewSkillForm()
-        context = {
-            'u': you,
-            'profile': profile,
-            'skills': user_skills,
-            'form': form,
-            'profile_page': "active",
-        }
-        return render(request, 'candidates/profile.html', context)
+    else:
+        form = NewSkillForm()
+    context = {
+        'u': you,
+        'profile': profile,
+        'skills': user_skills,
+        'form': form,
+        'profile_page': "active",
+    }
+    return render(request, 'candidates/profile.html', context)
 
 # Allows candidates to edit their profile.
 @login_required

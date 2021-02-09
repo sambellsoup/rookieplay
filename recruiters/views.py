@@ -1,4 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Job, Applicants, Selected
+from candidates.models import Profile, Skill
+from .forms import NewJobForm
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.views.generic import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.paginator import Paginator
+
 
 # Serves the recruiter's details page
 def rec_details(request):
@@ -23,7 +35,7 @@ def add_job(request):
         form = NewJobForm()
     context = {
         'add_job_page': "active",
-        'form': form
+        'form': form,
         'rec_navbar': 1,
     }
     return render(request, 'recruiters/add_job.html', context)
@@ -103,7 +115,8 @@ def search_candidates(request):
             final.append(i)
 
     for i in final:
-        if i in profiles_final.append(i)
+        if i in profiles:
+             profiles_final.append(i)
 
     paginator = Paginator(profiles_final, 20)
     page_number = request.GET.get('page')
@@ -191,8 +204,7 @@ def select_applicant(request, can_id, job_id):
     selected, created = Selected.objects.get_or_create(job=job, applicant=user)
     applicant = Applicants.objects.filter(job=job, applicant=user).first()
     applicant.delete()
-    return
-HttpResponseRedirect('/hiring/job/{}/applicants'.format(job.slug))
+    return HttpResponseRedirect('/hiring/job/{}/applicants'.format(job.slug))
 
 # Rejects an applicantwho has applied to a particular job post,
 # deleting the candidate from the applicant's list
@@ -203,5 +215,4 @@ def remove_applicant(request, can_id, job_id):
     user = profile.user
     applicant = Applicants.objects.filter(job=job, applicant=user).first()
     applicant.delete()
-    return
-HttpResponseRedirect('/hiring/job/{}/applicants'.format(job.slug))
+    return HttpResponseRedirect('/hiring/job/{}/applicants'.format(job.slug))
