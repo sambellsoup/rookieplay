@@ -39,41 +39,44 @@ from time import time
 def upload(request):
     context = {}
     if request.method == 'POST':
-        """File handling"""
-        document_file = request.FILES['document']
-        # document_type = request.POST['document_type']
-        upload = Upload(file=document_file)
-        upload.save()
-        document_url = upload.file.url
-        # print("this is the document url " + document_url)
-        # fs = FileSystemStorage()
-        name = upload.save()
-        # name = fs.save(document_file.name, document_file)
-        # context['url'] = document_url
-        context = {
-            'url': document_url,
-            'client_id_value': conf_settings.JOBSPIKR_API_ID,
-            'client_auth_key_value': conf_settings.JOBSPIKR_API_KEY,
-            'aws_access_key_value': conf_settings.AWS_ACCESS_KEY_ID
-        }
-        # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
-        # document_path = str(data_folder) + '\\'+  document_file.name
-        """Recommendation functions"""
-        resume_text = document_to_text(document_url)
-        basic_documentdf = compile_document_text(resume_text)
-        verbose_documentdf = text_to_bagofwords(basic_documentdf)
-        recommend_df = join_and_condense(verbose_documentdf)
-        cosine_sim = vectorize_text(recommend_df)
-        recommended_jobs = recommend_100(recommend_df, cosine_sim)
-        final_jobs = format_recommendations(recommended_jobs)
+        try:
+            """File handling"""
+            document_file = request.FILES['document']
+            # document_type = request.POST['document_type']
+            upload = Upload(file=document_file)
+            upload.save()
+            document_url = upload.file.url
+            # print("this is the document url " + document_url)
+            # fs = FileSystemStorage()
+            name = upload.save()
+            # name = fs.save(document_file.name, document_file)
+            # context['url'] = document_url
+            context = {
+                'url': document_url,
+                'client_id_value': conf_settings.JOBSPIKR_API_ID,
+                'client_auth_key_value': conf_settings.JOBSPIKR_API_KEY,
+                'aws_access_key_value': conf_settings.AWS_ACCESS_KEY_ID
+            }
+            # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
+            # document_path = str(data_folder) + '\\'+  document_file.name
+            """Recommendation functions"""
+            resume_text = document_to_text(document_url)
+            basic_documentdf = compile_document_text(resume_text)
+            verbose_documentdf = text_to_bagofwords(basic_documentdf)
+            recommend_df = join_and_condense(verbose_documentdf)
+            cosine_sim = vectorize_text(recommend_df)
+            recommended_jobs = recommend_100(recommend_df, cosine_sim)
+            final_jobs = format_recommendations(recommended_jobs)
 
 
-        context['recommendations'] = final_jobs
-        context['recommendation_0'] = final_jobs[0]
-        # final_jobs.pop(0)
-        context['recommendation_1'] = final_jobs[1]
-        # final_jobs.pop(0)
-        context['recommendation_2'] = final_jobs[2]
+            context['recommendations'] = final_jobs
+            context['recommendation_0'] = final_jobs[0]
+            # final_jobs.pop(0)
+            context['recommendation_1'] = final_jobs[1]
+            # final_jobs.pop(0)
+            context['recommendation_2'] = final_jobs[2]
+        except:
+            messages.info(request, 'Please choose a resume or cover letter to upload.')
 
     if request.method == 'GET':
         # title = request.GET['q']

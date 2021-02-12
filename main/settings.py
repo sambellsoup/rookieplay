@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     "crispy_forms",
     "recs",
     "users",
-    "bootstrap3",
     'storages',
     'django_filters',
     'django_countries',
@@ -203,9 +202,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
-BOOTSTRAP3 = {
-'include_jquery': True,
-}
 
 django_heroku.settings(locals())
 
