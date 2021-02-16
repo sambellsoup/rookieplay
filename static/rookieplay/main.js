@@ -15,7 +15,6 @@ var company_name = []
 var category = []
 var job_title = []
 
-// console.log({{ client_auth_key_value | safe }})
 
 
 
@@ -65,13 +64,8 @@ function thumbsup(key){
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
-        console.log("Job Title: " + q)
+        console.log("Job Query: " + q)
 
-
-        console.log('Status:', this.status);
-        console.log('Headers:', this.getAllResponseHeaders());
-        console.log('Body:', this.responseText);
-        // console.log("typeof test: ", typeof this.responseText);
         var myObj = JSON.parse(this.responseText);
         for (a in myObj.job_data){
           job_type.push(myObj.job_data[a].job_type)
@@ -87,7 +81,8 @@ function thumbsup(key){
           category.push(myObj.job_data[a].category)
           job_title.push(myObj.job_data[a].job_title)
         }
-        // console.log(job_title)
+
+        console.log('These are the recommended job titles: ' + job_title)
 
         document.getElementById("demob" + x).innerHTML = "Job Title: " + job_title[0];
         document.getElementById("democ" + x).innerHTML = "Location: " + city[0] + "," + state[0];
@@ -96,12 +91,8 @@ function thumbsup(key){
         document.getElementById("demof" + x).innerHTML = "Company Name: " + company_name[0];
         document.getElementById("demog" + x).innerHTML = "Job Description: " + job_description[0];
         x++
-
-
-        // console.log("x-value after thumbs up and add: ", x)
       }
     };
-    console.log("this is q: " + q)
     var body = {
   'size': 10,
   'format': 'json',
@@ -114,7 +105,7 @@ function thumbsup(key){
                "job_title",
                "inferred_job_title"
              ],
-             "query": q
+             "query":  '"/"'+ q + '\""'
            }
          },
          {
@@ -153,8 +144,8 @@ function thumbsup(key){
          {
            "range": {
              "post_date": {
-               "gte": "2020-12-01",
-               "lte": "2021-01-29"
+               "gte": "2021-01-01",
+               "lte": "2021-02-14"
              }
            }
          }
@@ -203,7 +194,6 @@ function thumbsup(key){
 	         company_name.push(myObj.job_data[a].company_name)
 	         category.push(myObj.job_data[a].category)
 	         job_title.push(myObj.job_data[a].job_title)
-           console.log(city)
          }
 
 

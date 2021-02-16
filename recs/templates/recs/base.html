@@ -56,27 +56,20 @@
 
 </head>
 
-<body>
 
-  <form action="https://www.paypal.com/donate" method="post" target="_top">
-  <input type="hidden" name="hosted_button_id" value="NWU5RKC6799N4" />
-  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-  <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-  </form>
-
-  <p>
-
-    <a href="https://www.rookieplay.com">
-      <img alt="Rookieplay logo" src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/rookieplay_logo.png"
-      height="91" width="101">
-    </a>
-
-
-  </p>
 
   <body>
      {% if not rec_navbar %}
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="https://www.rookieplay.com"> <img alt="Rookieplay logo" src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/rookieplay_logo.png"
+    height="91" width="101">
+    </a>
+
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+    <input type="hidden" name="hosted_button_id" value="NWU5RKC6799N4" />
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </form>
 
        <button
          class="navbar-toggler"
@@ -89,25 +82,21 @@
        >
          <span class="navbar-toggler-icon"></span>
        </button>
+
+
+
        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
          <div class="navbar-nav">
            <a class="nav-item nav-link {{ home_page }}" href="{% url 'home' %}">Job Search</a>
 
-           <a class="nav-item nav-link {{ privacy_policy }}" href="{% url 'recs:privacy' %}">Privacy Policy</a>
-           <a class="nav-item nav-link {{ terms_service }}" href="{% url 'recs:terms' %}">Terms of Service</a>
            <a class="nav-item nav-link {{ profile_page }}" href="{% url 'my-profile' %}">My Profile</a>
            <a class="nav-item nav-link {{ intel_page }}" href="{% url 'intelligent-search' %}">Get Relevant Jobs</a>
            <a class="nav-item nav-link {{ account_page }}" href="{% url 'account' %}">My Account</a>
 
            {% if user.is_authenticated %}
 
-             Hello, {{ user.username }}.
-             <a href="{% url 'users:logout' %}">Log Out</a>
-         </p>
-
-         <p>
-           <a href="{% url 'recs:topics' %}">Profile</a>
-           <a href="{% url 'recs:upload' %}">Upload</a>
+            Hello, {{ user.username }}.
+             <a class="nav-item nav-link {{logout_page }}" href="{% url 'users:logout' %}">Log Out</a>
 
 
            {% else %}
