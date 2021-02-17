@@ -86,17 +86,29 @@
 
 
        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-         <div class="navbar-nav">
-           <a class="nav-item nav-link {{ home_page }}" href="{% url 'home' %}">Job Search</a>
-
-           <a class="nav-item nav-link {{ profile_page }}" href="{% url 'my-profile' %}">My Profile</a>
-           <a class="nav-item nav-link {{ intel_page }}" href="{% url 'intelligent-search' %}">Get Relevant Jobs</a>
-           <a class="nav-item nav-link {{ account_page }}" href="{% url 'account' %}">My Account</a>
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-item nav-link {{ home_page }}" href="{% url 'home' %}">Job Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item nav-link {{ profile_page }}" href="{% url 'my-profile' %}">My Profile</a>
+            </li>
+              <a class="nav-item nav-link {{ intel_page }}" href="{% url 'intelligent-search' %}">Get Relevant Jobs</a>
+            <li class="nav-item">
+              <a class="nav-item nav-link {{ account_page }}" href="{% url 'account' %}">My Account</a>
+            </li>
+        </ul>
 
            {% if user.is_authenticated %}
-
-            Hello, {{ user.username }}.
+           <ul class="navbar-nav">
+             <li class="nav-item nav-link" style="color:white;">   {{ user.username }} </li>
+              <li class="nav-item nav-link"
              <a class="nav-item nav-link {{logout_page }}" href="{% url 'users:logout' %}">Log Out</a>
+           </li>
+         </ul>
+       </div>
+     </nav>
+
 
 
            {% else %}
