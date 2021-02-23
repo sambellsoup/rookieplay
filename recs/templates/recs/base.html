@@ -53,6 +53,8 @@
 
 
   <body>
+  <div class="wrap">
+  <div id="container">
      {% if not rec_navbar %}
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a class="navbar-brand" href="https://www.rookieplay.com"> <img alt="Rookieplay logo" src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/rookieplay_logo.png"
@@ -116,7 +118,7 @@
            >
            {% endif %}
          </div>
-       </div>
+
      </nav>
      {% else %}
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -178,6 +180,8 @@
          </div>
        {% endfor %}
      {% endif %}
+
+</div>
 
      <footer class="footer">
        <hr my-2 />
