@@ -7,6 +7,10 @@ body {
   background-color: #f8f9fe;
 }
 
+p span {
+  display: block;
+}
+
 .card-signin {
   border: 0;
   border-radius: 1rem;
