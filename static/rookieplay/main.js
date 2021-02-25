@@ -80,17 +80,18 @@ function thumbsup(key){
           company_name.push(myObj.job_data[a].company_name)
           category.push(myObj.job_data[a].category)
           job_title.push(myObj.job_data[a].job_title)
+          document.getElementById("demob" + x).innerHTML = "Job Title: " + job_title[x];
+          document.getElementById("democ" + x).innerHTML = "Location: " + city[x] + "," + state[x];
+          document.getElementById("demod" + x).innerHTML = "Posted: " + post_date[x];
+          document.getElementById("demoe" + x).innerHTML = "Apply Here".link(url[x]);
+          document.getElementById("demof" + x).innerHTML = "Company Name: " + company_name[x];
+          document.getElementById("demog" + x).innerHTML = "Job Description: " + job_description[x];
+          x++
         }
 
         console.log('These are the recommended job titles: ' + job_title)
 
-        document.getElementById("demob" + x).innerHTML = "Job Title: " + job_title[0];
-        document.getElementById("democ" + x).innerHTML = "Location: " + city[0] + "," + state[0];
-        document.getElementById("demod" + x).innerHTML = "Posted: " + post_date[0];
-        document.getElementById("demoe" + x).innerHTML = "Apply Here".link(url[0]);
-        document.getElementById("demof" + x).innerHTML = "Company Name: " + company_name[0];
-        document.getElementById("demog" + x).innerHTML = "Job Description: " + job_description[0];
-        x++
+
       }
     };
     var body = {
@@ -144,8 +145,8 @@ function thumbsup(key){
          {
            "range": {
              "post_date": {
-               "gte": "2021-01-01",
-               "lte": "2021-02-14"
+               "gte": "2021-01-25",
+               "lte": "2021-02-25"
              }
            }
          }
