@@ -145,8 +145,8 @@ function thumbsup(key){
          {
            "range": {
              "post_date": {
-               "gte": "2021-01-25",
-               "lte": "2021-02-25"
+               "gte": "2021-02-26",
+               "lte": "2021-02-26"
              }
            }
          }
