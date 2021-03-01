@@ -16,3 +16,5 @@ invoices/
 /static/rookieplay/key.json
 
 .ipynb_checkpoints/
+
+messaging/
