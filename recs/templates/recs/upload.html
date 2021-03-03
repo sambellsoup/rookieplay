@@ -10,6 +10,108 @@
       console.log("This is the query that should be passed to views: " + q);
     });
   });
+
+
+    $(function RevealDes0() {
+      var T = document.getElementById('demog0'),
+        displayValue = "";
+      if (T.style.display == "")
+        displayValue = "none";
+
+      T.style.display = displayValue
+    }
+  )
+
+  $(function RevealDes1() {
+    var T = document.getElementById('demog1'),
+      displayValue = "";
+    if (T.style.display == "")
+      displayValue = "none";
+
+    T.style.display = displayValue
+  }
+)
+
+$(function RevealDes0() {
+  var T = document.getElementById('demog2'),
+    displayValue = "";
+  if (T.style.display == "")
+    displayValue = "none";
+
+  T.style.display = displayValue
+}
+)
+
+$(function RevealDes0() {
+  var T = document.getElementById('demog3'),
+    displayValue = "";
+  if (T.style.display == "")
+    displayValue = "none";
+
+  T.style.display = displayValue
+}
+)
+
+$(function RevealDes0() {
+  var T = document.getElementById('demog4'),
+    displayValue = "";
+  if (T.style.display == "")
+    displayValue = "none";
+
+  T.style.display = displayValue
+}
+)
+
+$(function RevealDes0() {
+  var T = document.getElementById('demog5'),
+    displayValue = "";
+  if (T.style.display == "")
+    displayValue = "none";
+
+  T.style.display = displayValue
+}
+)
+
+$(function RevealDes0() {
+  var T = document.getElementById('demog6'),
+    displayValue = "";
+  if (T.style.display == "")
+    displayValue = "none";
+
+  T.style.display = displayValue
+}
+)
+
+$(function RevealDes0() {
+  var T = document.getElementById('demog7'),
+    displayValue = "";
+  if (T.style.display == "")
+    displayValue = "none";
+
+  T.style.display = displayValue
+}
+)
+
+$(function RevealDes0() {
+  var T = document.getElementById('demog8'),
+    displayValue = "";
+  if (T.style.display == "")
+    displayValue = "none";
+
+  T.style.display = displayValue
+}
+)
+
+$(function RevealDes0() {
+  var T = document.getElementById('demog9'),
+    displayValue = "";
+  if (T.style.display == "")
+    displayValue = "none";
+
+  T.style.display = displayValue
+}
+)
+
   </script>
 </head>
 {% extends 'recs/base.html' %}
@@ -122,7 +224,7 @@
 <br></br>
 
 <div class = "w3-container">
-  <div class="w3-panel w3-blue w3-round-xlarge" id="demo0">
+  <div class="w3-panel w3-blue w3-round-xlarge" id="demo0" onclick="RevealDes0('demog0')">
     <div id="demoa0" class="panel-heading">
           </div>
     <div id="demob0" class="panel-body">
@@ -141,7 +243,7 @@
 </div>
 
 <div class = "w3-container">
-  <div class="w3-panel w3-blue w3-round-xlarge" id="demo1">
+  <div class="w3-panel w3-blue w3-round-xlarge" id="demo1" onclick="RevealDes1('demog1')">
     <div id="demoa1" class="panel-heading">
           </div>
     <div id="demob1" class="panel-body">
@@ -322,6 +424,7 @@
       $('#demog0').slideToggle(200);
     });
 });
+
 
   $(function() {
 
