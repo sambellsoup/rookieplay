@@ -21,3 +21,4 @@ twilio/
 nexmo/
 
 *.ipynb
+*.csv
