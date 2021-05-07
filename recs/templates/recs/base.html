@@ -101,8 +101,7 @@
            {% if user.is_authenticated %}
            <ul class="navbar-nav">
              <li class="nav-item nav-link" style="color:white;">   {{ user.username }} </li>
-              <li class="nav-item nav-link"
-             <a class="nav-item nav-link {{logout_page }}" href="{% url 'users:logout' %}">Log Out</a>
+             <a class="nav-item nav-link btn btn-danger ml-4 mr-4 text-light" href="{% url 'users:logout' %}">log out</a>
            </li>
          </ul>
        </div>
@@ -173,7 +172,73 @@
      {% endif %}
 
      <main>
-       <section class="glass"></section>
+       <section class="glass">
+         <div class="dashboard">
+           <div class="user">
+             <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/avatar_test.png" width="100" height="100" alt=""/>
+             <h3> {{user.username}}</h3>
+             <p> Pro Member </p>
+           </div>
+           <div class="links">
+             <div class="link">
+               <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/twitch.png" alt=""/>
+               <h2>Streams</h2>
+             </div>
+             <div class="link">
+               <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/steam.png" alt=""/>
+               <h2>Games</h2>
+             </div>
+             <div class="link">
+               <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/upcoming.png" alt=""/>
+               <h2>New</h2>
+             </div>
+             <div class="link">
+               <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/library.png" alt=""/>
+               <h2>Library</h2>
+             </div>
+         </div>
+         <div class="pro">
+           <h2>Join pro for free games.</h2>
+           <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/controller.png" alt=""/>
+         </div>
+       </div>
+       <div class="games">
+         <div class="status">
+           <h1> Active Games </h1>
+          <input type="text" />
+        </div>
+        <div class="chard">
+          <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/assassins.png" width="100" height="100" alt="">
+          <div class="card-info">
+            <h2> Assassins Creed Valhalla</h2>
+            <p> PS5 Version </p>
+            <div class="progress"></div>
+          </div>
+          <h2 class="percentage">60%</h2>
+        </div>
+        <div class="chard">
+          <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/assassins.png"  width="100" height="100" alt="">
+          <div class="card-info">
+            <h2> Assassins Creed Valhalla</h2>
+            <p> PS5 Version </p>
+            <div class="progress"></div>
+          </div>
+          <h2 class="percentage">60%</h2>
+        </div>
+        <div class="chard">
+          <img src="https://rookieplay-uploads.s3.amazonaws.com/static/rookieplay/img/assassins.png" width="100" height="100" alt="">
+          <div class="card-info">
+            <h2> Assassins Creed Valhalla</h2>
+            <p> PS5 Version </p>
+            <div class="progress"></div>
+          </div>
+          <h2 class="percentage">60%</h2>
+        </div>
+      </div>
+
+
+
+       </section>
      </main>
      <div class="circle1"></div>
      <div class="circle2"></div>
