@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'django_cleanup.apps.CleanupConfig',
     'pwa',
-    'company_data_api',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
