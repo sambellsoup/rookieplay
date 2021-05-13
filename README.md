@@ -6,6 +6,9 @@ Rookieplay is a job recommendation engine that analyzes resume / cover letter da
 
 Deployed on Heroku for testing and initial proof of concept. 
 
+![Current layout of application](static/rookieplay/img/app_sample.png)
+> Current layout of application
+
 ## Status 
 
 This is a *Work in Progress*! Development is ongoing, but you can check out the current live version at [http://rookieplay.herokuapp.com/](http://rookieplay.herokuapp.com/).
