@@ -117,7 +117,7 @@ def format_recommendations(recommendations):
         job = job.replace('Hr Manager', 'HR Manager')
         job = job.replace('Care Giver / Hha / Cna', 'Care Giver')
         jobs10.append(job)
-    jobs10 = set(jobs10[0:100])
+    jobs10 = list(dict.fromkeys(jobs10))
     format_jobs = list(jobs10)
     # final_jobs10 = jobs10[0:3]
     # for i, item in enumerate(final_jobs10, 1):
