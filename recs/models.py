@@ -22,6 +22,9 @@ class Companies(models.Model):
     logo = models.URLField()
     image = models.URLField()
 
+    def __str__(Self):
+        return self.text
+
     class Meta:
         verbose_name_plural = 'companies'
 
