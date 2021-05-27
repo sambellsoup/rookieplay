@@ -22,6 +22,9 @@ class Companies(models.Model):
     logo = models.URLField()
     image = models.URLField()
 
+    class Meta:
+        verbose_name_plural = 'companies'
+
 
 class Jobs(models.Model):
     job_id = models.BigIntegerField(primary_key=True)
@@ -40,13 +43,13 @@ class Jobs(models.Model):
         self.job_title,
         self.pub_date.strftime('%Y-%m-%d'))
 
-class Meta:
-    verbose_name = 'job posting'
-    ordering = ['-pub_date']
+    class Meta:
+        verbose_name = 'job posting'
+        verbose_name_plural = 'jobs'
+        ordering = ['-pub_date']
 
 
-class Greeting(models.Model):
-    when = models.DateTimeField("date created", auto_now_add=True)
+
 
 class Topic(models.Model):
     """A topic the user is learning about"""

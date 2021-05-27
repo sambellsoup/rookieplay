@@ -7,7 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
 from django.conf import settings as conf_settings
 
-from .models import Greeting, Topic, Entry, Upload
+from .models import Topic, Entry, Upload, Jobs, Companies
 from .forms import TopicForm, EntryForm
 
 # recommendation packages
@@ -53,9 +53,6 @@ def upload(request):
             # context['url'] = document_url
             context = {
                 'url': document_url,
-                'client_id_value': conf_settings.JOBSPIKR_API_ID,
-                'client_auth_key_value': conf_settings.JOBSPIKR_API_KEY,
-                'aws_access_key_value': conf_settings.AWS_ACCESS_KEY_ID
             }
             # data_folder = Path("C:/Users/sambe/Projects/rookieplay/data/uploaded_documents/")
             # document_path = str(data_folder) + '\\'+  document_file.name

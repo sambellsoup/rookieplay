@@ -5,12 +5,6 @@
   <title>Rookieplay--Upload</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-  $(document).ready(function(){
-    $("#thumbs-up-0").click(function() {
-      console.log("This is the query that should be passed to views: " + q);
-    });
-  });
-
 
     $(function RevealDes0() {
       var T = document.getElementById('demog0'),
@@ -139,16 +133,14 @@ $(function RevealDes0() {
 
 
 <script>
-  var client_id_value = "{{ client_id_value | safe }}";
-  var client_auth_key_value = "{{ client_auth_key_value | safe }}";
   var text;
   var jobs = {{ recommendations | safe }};
   var jobs_bank = {{ recommendations | safe }};
 
   jobs_bank.splice(0, 3)
 
-  const thumbs_down_list = [];
-  const thumbs_up_list = [];
+  var thumbs_down_list = [];
+  var thumbs_up_list = [];
 
   function myFunction(value) {
     text += "<li>" + value + "</li>";

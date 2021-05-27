@@ -14,22 +14,10 @@ var post_date = []
 var company_name = []
 var category = []
 var job_title = []
+var thumbs_up_list = []
 
 
 
-
-
-
-/*
-$(function (){
-
-  $.ajax({
-
-  });
-
-});
-
-*/
 
 function thumbsup(key){
   if (x === 10){
@@ -38,6 +26,8 @@ function thumbsup(key){
   }
   else{
     thumbs_up_list.push(jobs[key]);
+    console.log('test')
+    console.log('thumbs up list: ' + thumbs_up_list)
     // Use job title to conduct google search for links to live job ads
     var q = jobs[key]
 
@@ -59,8 +49,6 @@ function thumbsup(key){
     request.open('POST', 'https://api.jobspikr.com/v2/data');
 
     request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('client_id', client_id_value);
-    request.setRequestHeader('client_auth_key', client_auth_key_value);
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
@@ -95,114 +83,6 @@ function thumbsup(key){
 
       }
     };
-    var body = {
-  'size': 10,
-  'format': 'json',
-  "search_query_json": {
-     "bool": {
-       "must": [
-         {
-           "query_string": {
-             "fields": [
-               "job_title",
-               "inferred_job_title"
-             ],
-             "query":  '"/"'+ q + '\""'
-           }
-         },
-         {
-           "query_string": {
-             "default_field": "job_type",
-             "query": "*"
-           }
-         },
-         {
-           "query_string": {
-             "default_field": "company_name",
-             "query": "*"
-           }
-         },
-         {
-           "bool": {
-             "should": [
-               {
-                 "bool": {
-                   "must": [
-                     {
-                       "query_string": {
-                         "fields": [
-                           "country",
-                           "inferred_country"
-                         ],
-                         "query": "\"USA\" OR \"US\""
-                       }
-                     }
-                   ]
-                 }
-               }
-             ]
-           }
-         },
-         {
-           "range": {
-             "post_date": {
-               "gte": "2021-03-02",
-               "lte": "2021-03-02"
-             }
-           }
-         }
-       ],
-       "must_not": [
-         null,
-         {
-           "query_string": {
-             "default_field": "company_name",
-             "query": "Unspecified"
-           }
-         }
-       ]
-     }
-   }
- }
-
-    request.send(JSON.stringify(body));
-
-
-
-
-
-        for (a in myObj.job_data) {
-	         z += "Job Type: " + myObj.job_data[a].job_type + " "
-           z += "Cursor: " + myObj.job_data[a].cursor + " "
-           z += "City: " + myObj.job_data[a].city + " "
-	         z += "Salary Offered: " + myObj.job_data[a].salary_offered + " "
-	         z += "URL: " + myObj.job_data[a].url + " "
-	         z += "Job Description: " + myObj.job_data[a].job_description + " "
- 	         z += "Job Board: " + myObj.job_data[a].job_board + " "
- 	         z += "Post Date: " + myObj.job_data[a].post_date + " "
-	         z += "Company Name: " + myObj.job_data[a].company_name + " "
-	         z += "Category: " + myObj.job_data[a].category + " "
-	         z += "Job Title: " + myObj.job_data[a].job_title + " "
-
-
-           job_type.push(myObj.job_data[a].job_type)
-           cursor.push(myObj.job_data[a].cursor)
-           city.push(myObj.job_data[a].city)
-	         salary_offered.push(myObj.job_data[a].salary_offered)
-	         url.push(myObj.job_data[a].url)
-	         job_description.push(myObj.job_data[a].job_description)
- 	         job_board.push(myObj.job_data[a].job_board)
- 	         post_date.push(myObj.job_data[a].post_date)
-	         company_name.push(myObj.job_data[a].company_name)
-	         category.push(myObj.job_data[a].category)
-	         job_title.push(myObj.job_data[a].job_title)
-         }
-
-
-
-
-
-
       };
     }
 
