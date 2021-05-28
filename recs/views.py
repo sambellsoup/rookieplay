@@ -72,8 +72,11 @@ def upload(request):
             context['recommendation_1'] = final_jobs[1]
             # final_jobs.pop(0)
             context['recommendation_2'] = final_jobs[2]
+
+
         except:
             messages.info(request, 'Please choose a resume or cover letter to upload.')
+
 
     if request.method == 'GET':
         # title = request.GET['q']

@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -38,7 +38,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.sites",
     "django.contrib.contenttypes",
@@ -61,7 +60,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'django_cleanup.apps.CleanupConfig',
     'pwa',
-    'rest_framework'
+    'rest_framework',
+    "django.contrib.admin",
+    "django.contrib.admindocs",
 ]
 
 MIDDLEWARE = [
